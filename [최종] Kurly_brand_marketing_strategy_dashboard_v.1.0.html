@@ -1,0 +1,2102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kurly 브랜드 마케터 — 콘텐츠 전략 대시보드</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #08080f;
+  --surface: #111118;
+  --surface2: #18181f;
+  --border: #252530;
+  --kurly: #5f0080;
+  --kurly-mid: #9b30c0;
+  --kurly-light: #bd76ff;
+  --gold: #f5c842;
+  --green: #22c55e;
+  --blue: #3b82f6;
+  --coral: #ff6b6b;
+  --teal: #2dd4bf;
+  --text: #f0f0f8;
+  --muted: #7070a0;
+  --border-light: rgba(255,255,255,0.06);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;min-height:100vh;line-height:1.6;}
+
+body::before{
+  content:'';position:fixed;top:-200px;left:-200px;width:600px;height:600px;
+  background:radial-gradient(circle,rgba(95,0,128,0.13) 0%,transparent 65%);
+  pointer-events:none;z-index:0;
+}
+body::after{
+  content:'';position:fixed;bottom:-200px;right:-100px;width:500px;height:500px;
+  background:radial-gradient(circle,rgba(189,118,255,0.07) 0%,transparent 65%);
+  pointer-events:none;z-index:0;
+}
+
+/* ── BANNER ── */
+.banner{
+  background:linear-gradient(90deg,rgba(189,118,255,0.12) 0%,rgba(189,118,255,0.04) 100%);
+  border-bottom:2px solid rgba(189,118,255,0.3);
+  padding:10px 56px;font-size:11px;font-weight:700;letter-spacing:2px;
+  color:var(--kurly-light);display:flex;align-items:center;gap:10px;
+  position:relative;z-index:3;text-transform:uppercase;
+}
+.banner-right{margin-left:auto;display:flex;gap:8px;}
+.b-tag{padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;
+  background:rgba(189,118,255,0.15);color:var(--kurly-light);
+  border:1px solid rgba(189,118,255,0.3);letter-spacing:0.5px;}
+
+/* ── HEADER ── */
+.header{
+  position:relative;z-index:2;
+  padding:44px 56px 36px;
+  border-bottom:1px solid var(--border);
+  background:linear-gradient(180deg,rgba(95,0,128,0.09) 0%,transparent 100%);
+}
+.header-inner{max-width:1360px;margin:0 auto;}
+.tag{display:inline-block;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--kurly-light);margin-bottom:12px;font-weight:500;}
+.header h1{
+  font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,4.8vw,68px);
+  letter-spacing:2px;line-height:1.05;
+  background:linear-gradient(135deg,#fff 20%,var(--kurly-light) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.header-sub{margin-top:12px;font-size:13px;color:var(--muted);font-weight:300;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.date-badge{margin-left:auto;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:8px;padding:5px 14px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* ── MAIN ── */
+.main{max-width:1360px;margin:0 auto;padding:44px 56px;position:relative;z-index:1;}
+
+/* ── SECTION TITLE ── */
+.sec-title{font-size:15px;font-weight:700;letter-spacing:0.5px;color:var(--text);margin:0 0 24px;display:flex;align-items:center;gap:12px;}
+.sec-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.sec-num{background:var(--kurly);color:white;width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+.sec-num.gold{background:rgba(245,200,66,0.2);color:var(--gold);border:1px solid rgba(245,200,66,0.4);width:28px;height:28px;font-size:16px;}
+
+/* ── INSIGHT STRIP ── */
+.insight-strip{
+  background:linear-gradient(135deg,rgba(189,118,255,0.1) 0%,rgba(95,0,128,0.06) 100%);
+  border:1px solid rgba(189,118,255,0.2);border-radius:18px;
+  padding:26px 32px;margin-bottom:48px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  position:relative;overflow:hidden;
+}
+.insight-strip::before{
+  content:'DATA → CONTENT';position:absolute;right:24px;top:14px;
+  font-family:'Bebas Neue',sans-serif;font-size:64px;
+  color:rgba(189,118,255,0.05);letter-spacing:4px;pointer-events:none;
+}
+.is-item{padding:16px 22px;border-right:1px solid rgba(189,118,255,0.12);}
+.is-item:last-child{border:none;}
+.is-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.is-val{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--kurly-light);letter-spacing:1px;line-height:1;}
+.is-sub{font-size:11px;color:var(--muted);margin-top:4px;}
+
+/* ── CONTENT CARDS GRID ── */
+.content-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:48px;}
+
+.c-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:20px;
+  padding:0;overflow:hidden;
+  transition:transform 0.2s ease,box-shadow 0.2s ease;
+  display:flex;flex-direction:column;
+}
+.c-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.4);}
+
+.c-card-top{padding:22px 22px 16px;border-bottom:1px solid var(--border);min-height:172px;}
+.c-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px;flex-shrink:0;}
+.c-category{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:7px;}
+.c-title{font-size:16px;font-weight:700;line-height:1.35;margin-bottom:8px;}
+.c-desc{font-size:12px;color:var(--muted);line-height:1.65;}
+
+.c-card-mid{padding:16px 22px;border-bottom:1px solid var(--border);flex:1;}
+.c-section-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.c-direction-list{display:flex;flex-direction:column;gap:7px;}
+.c-dir-item{display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.55;}
+.c-dir-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:6px;}
+
+.c-card-bottom{padding:16px 22px;}
+.c-effect-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+.c-effect-chip{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:0.3px;}
+
+.c-message{
+  background:rgba(255,255,255,0.04);border-radius:10px;
+  padding:10px 14px;font-size:12px;font-weight:500;
+  line-height:1.55;font-style:italic;
+  border-left:3px solid;
+  color:var(--text);
+}
+.c-message-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+
+/* ── COLOR THEMES PER CARD ── */
+/* Bakery — gold */
+.theme-gold .c-icon{background:rgba(245,200,66,0.15);}
+.theme-gold .c-category{color:var(--gold);}
+.theme-gold .c-card-top{border-top:3px solid var(--gold);}
+.theme-gold .c-dir-dot{background:var(--gold);}
+.theme-gold .c-effect-chip{background:rgba(245,200,66,0.12);color:var(--gold);border:1px solid rgba(245,200,66,0.25);}
+.theme-gold .c-message{border-color:var(--gold);}
+
+/* Meat bundle — purple */
+.theme-purple .c-icon{background:rgba(189,118,255,0.15);}
+.theme-purple .c-category{color:var(--kurly-light);}
+.theme-purple .c-card-top{border-top:3px solid var(--kurly-light);}
+.theme-purple .c-dir-dot{background:var(--kurly-light);}
+.theme-purple .c-effect-chip{background:rgba(189,118,255,0.12);color:var(--kurly-light);border:1px solid rgba(189,118,255,0.25);}
+.theme-purple .c-message{border-color:var(--kurly-light);}
+
+/* Veggie sub — green */
+.theme-green .c-icon{background:rgba(34,197,94,0.15);}
+.theme-green .c-category{color:var(--green);}
+.theme-green .c-card-top{border-top:3px solid var(--green);}
+.theme-green .c-dir-dot{background:var(--green);}
+.theme-green .c-effect-chip{background:rgba(34,197,94,0.12);color:var(--green);border:1px solid rgba(34,197,94,0.25);}
+.theme-green .c-message{border-color:var(--green);}
+
+/* Mealkit — blue */
+.theme-blue .c-icon{background:rgba(59,130,246,0.15);}
+.theme-blue .c-category{color:var(--blue);}
+.theme-blue .c-card-top{border-top:3px solid var(--blue);}
+.theme-blue .c-dir-dot{background:var(--blue);}
+.theme-blue .c-effect-chip{background:rgba(59,130,246,0.12);color:var(--blue);border:1px solid rgba(59,130,246,0.25);}
+.theme-blue .c-message{border-color:var(--blue);}
+
+/* Restaurant brand — coral */
+.theme-coral .c-icon{background:rgba(255,107,107,0.15);}
+.theme-coral .c-category{color:var(--coral);}
+.theme-coral .c-card-top{border-top:3px solid var(--coral);}
+.theme-coral .c-dir-dot{background:var(--coral);}
+.theme-coral .c-effect-chip{background:rgba(255,107,107,0.12);color:var(--coral);border:1px solid rgba(255,107,107,0.25);}
+.theme-coral .c-message{border-color:var(--coral);}
+
+/* Price story — teal */
+.theme-teal .c-icon{background:rgba(45,212,191,0.15);}
+.theme-teal .c-category{color:var(--teal);}
+.theme-teal .c-card-top{border-top:3px solid var(--teal);}
+.theme-teal .c-dir-dot{background:var(--teal);}
+.theme-teal .c-effect-chip{background:rgba(45,212,191,0.12);color:var(--teal);border:1px solid rgba(45,212,191,0.25);}
+.theme-teal .c-message{border-color:var(--teal);}
+
+/* ── CHANNEL MATRIX ── */
+.channel-matrix{background:var(--surface);border:1px solid var(--border);border-radius:18px;overflow:hidden;margin-bottom:48px;}
+.cm-table{width:100%;border-collapse:collapse;font-size:12px;}
+.cm-table th{padding:12px 16px;text-align:left;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:700;background:rgba(255,255,255,0.02);border-bottom:1px solid var(--border);}
+.cm-table td{padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:middle;}
+.cm-table tr:last-child td{border:none;}
+.cm-table tr:hover td{background:rgba(255,255,255,0.015);}
+.cm-content-name{font-weight:600;font-size:13px;}
+.cm-content-sub{font-size:11px;color:var(--muted);margin-top:2px;}
+.ch-badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:5px;margin:2px 2px 0 0;}
+.kpi-pill{display:inline-block;font-size:10px;font-weight:700;padding:2px 9px;border-radius:20px;font-family:'DM Mono',monospace;}
+.priority-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:8px;font-family:'DM Mono',monospace;white-space:nowrap;}
+.pri-1{background:rgba(232,35,42,0.12);color:#ff6b6b;border:1px solid rgba(232,35,42,0.25);}
+.pri-2{background:rgba(245,200,66,0.12);color:var(--gold);border:1px solid rgba(245,200,66,0.25);}
+.pri-3{background:rgba(112,112,160,0.12);color:var(--muted);border:1px solid rgba(112,112,160,0.2);}
+.pri-4{background:rgba(244,114,182,0.12);color:#f472b6;border:1px solid rgba(244,114,182,0.25);}
+.pri-dot{width:6px;height:6px;border-radius:50%;}
+.pri-1 .pri-dot{background:#ff6b6b;}
+.pri-2 .pri-dot{background:var(--gold);}
+.pri-3 .pri-dot{background:var(--muted);}
+.pri-4 .pri-dot{background:#f472b6;}
+.diff-bar{height:6px;border-radius:3px;background:linear-gradient(90deg,var(--kurly-mid),var(--kurly-light));display:inline-block;vertical-align:middle;margin-right:6px;}
+
+/* ── PRIORITY TIMELINE ── */
+/* ── TIMELINE INFOGRAPHIC ── */
+.timeline{margin-bottom:48px;position:relative;}
+
+/* 연결 화살표 트랙 */
+.tl-track{
+  display:flex;align-items:center;
+  margin-bottom:0;
+  position:relative;
+  padding:0 0 0 0;
+}
+
+/* 각 페이즈 래퍼 */
+.tl-node-wrap{
+  flex:1;display:flex;flex-direction:column;align-items:center;
+  position:relative;
+}
+
+/* 번호 뱃지 */
+.tl-badge{
+  width:48px;height:48px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;
+  border:2px solid;position:relative;z-index:2;
+  flex-shrink:0;
+}
+.tl-node-wrap.p1 .tl-badge{background:rgba(245,200,66,0.15);border-color:var(--gold);color:var(--gold);}
+.tl-node-wrap.p2 .tl-badge{background:rgba(189,118,255,0.15);border-color:var(--kurly-light);color:var(--kurly-light);}
+.tl-node-wrap.p3 .tl-badge{background:rgba(45,212,191,0.15);border-color:var(--teal);color:var(--teal);}
+.tl-node-wrap.p4 .tl-badge{background:rgba(251,146,60,0.15);border-color:#fb923c;color:#fb923c;}
+.tl-node-wrap.p5 .tl-badge{background:rgba(244,114,182,0.15);border-color:#f472b6;color:#f472b6;}
+
+/* 배지 아래 세로선 → 카드 연결 */
+.tl-vline{
+  width:2px;height:24px;flex-shrink:0;
+}
+.tl-node-wrap.p1 .tl-vline{background:linear-gradient(180deg,var(--gold),rgba(245,200,66,0.2));}
+.tl-node-wrap.p2 .tl-vline{background:linear-gradient(180deg,var(--kurly-light),rgba(189,118,255,0.2));}
+.tl-node-wrap.p3 .tl-vline{background:linear-gradient(180deg,var(--teal),rgba(45,212,191,0.2));}
+.tl-node-wrap.p4 .tl-vline{background:linear-gradient(180deg,#fb923c,rgba(251,146,60,0.2));}
+.tl-node-wrap.p5 .tl-vline{background:linear-gradient(180deg,#f472b6,rgba(244,114,182,0.2));}
+
+/* 기간 태그 (뱃지 위) */
+.tl-period{
+  font-family:'DM Mono',monospace;font-size:11px;font-weight:700;
+  padding:3px 11px;border-radius:20px;margin-bottom:10px;letter-spacing:0.5px;
+}
+.tl-node-wrap.p1 .tl-period{background:rgba(245,200,66,0.12);color:var(--gold);border:1px solid rgba(245,200,66,0.3);}
+.tl-node-wrap.p2 .tl-period{background:rgba(189,118,255,0.12);color:var(--kurly-light);border:1px solid rgba(189,118,255,0.3);}
+.tl-node-wrap.p3 .tl-period{background:rgba(45,212,191,0.12);color:var(--teal);border:1px solid rgba(45,212,191,0.3);}
+.tl-node-wrap.p4 .tl-period{background:rgba(251,146,60,0.12);color:#fb923c;border:1px solid rgba(251,146,60,0.3);}
+.tl-node-wrap.p5 .tl-period{background:rgba(244,114,182,0.12);color:#f472b6;border:1px solid rgba(244,114,182,0.3);}
+
+/* 화살표 연결선 (노드 사이) */
+.tl-arrow{
+  flex-shrink:0;display:flex;align-items:center;margin-top:0;
+  position:relative;
+  /* 배지 높이 + period 높이 만큼 위에서 내려온 위치에 맞춤 */
+  padding-top:62px;
+}
+.tl-arrow-line{
+  width:60px;height:2px;
+  background:linear-gradient(90deg,rgba(189,118,255,0.4),rgba(189,118,255,0.15));
+  position:relative;
+}
+.tl-arrow-line::after{
+  content:'';position:absolute;right:-1px;top:50%;transform:translateY(-50%);
+  border-left:8px solid rgba(189,118,255,0.5);
+  border-top:5px solid transparent;
+  border-bottom:5px solid transparent;
+}
+
+/* 카드 */
+.tl-card{
+  width:100%;background:var(--surface);
+  border:1px solid var(--border);border-radius:16px;
+  padding:18px 20px;
+}
+.tl-node-wrap.p1 .tl-card{border-top:3px solid var(--gold);}
+.tl-node-wrap.p2 .tl-card{border-top:3px solid var(--kurly-light);}
+.tl-node-wrap.p3 .tl-card{border-top:3px solid var(--teal);}
+.tl-node-wrap.p4 .tl-card{border-top:3px solid #fb923c;}
+.tl-node-wrap.p5 .tl-card{border-top:3px solid #f472b6;}
+
+.tl-label{
+  font-size:10px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;margin-bottom:12px;
+}
+.tl-node-wrap.p1 .tl-label{color:var(--gold);}
+.tl-node-wrap.p2 .tl-label{color:var(--kurly-light);}
+.tl-node-wrap.p3 .tl-label{color:var(--teal);}
+.tl-node-wrap.p4 .tl-label{color:#fb923c;}
+.tl-node-wrap.p5 .tl-label{color:#f472b6;}
+
+.tl-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
+.tl-item:last-child{border:none;padding-bottom:0;}
+.tl-dot{
+  width:22px;height:22px;border-radius:6px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:700;margin-top:1px;
+}
+.tl-node-wrap.p1 .tl-dot{background:rgba(245,200,66,0.15);color:var(--gold);}
+.tl-node-wrap.p2 .tl-dot{background:rgba(189,118,255,0.15);color:var(--kurly-light);}
+.tl-node-wrap.p3 .tl-dot{background:rgba(45,212,191,0.15);color:var(--teal);}
+.tl-node-wrap.p4 .tl-dot{background:rgba(251,146,60,0.15);color:#fb923c;}
+.tl-node-wrap.p5 .tl-dot{background:rgba(244,114,182,0.15);color:#f472b6;}
+.tl-item-main{font-weight:700;font-size:12.5px;line-height:1.35;}
+.tl-item-sub{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.5;}
+
+/* ── KPI SUMMARY ── */
+.kpi-row-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:48px;}
+.kpi-box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 20px;}
+.kpi-box-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.kpi-box-val{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--kurly-light);letter-spacing:1px;line-height:1;}
+.kpi-box-sub{font-size:11px;color:var(--muted);margin-top:5px;line-height:1.5;}
+
+/* ── FOOTER ── */
+.footer{text-align:center;padding:26px 56px;border-top:1px solid var(--border);font-size:12px;color:var(--muted);position:relative;z-index:1;}
+
+.mb-48{margin-bottom:48px;}
+
+/* ── FADE IN ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.c-card{animation:fadeUp 0.5s ease both;}
+.c-card:nth-child(1){animation-delay:0.05s;}
+.c-card:nth-child(2){animation-delay:0.1s;}
+.c-card:nth-child(3){animation-delay:0.15s;}
+.c-card:nth-child(4){animation-delay:0.2s;}
+.c-card:nth-child(5){animation-delay:0.25s;}
+.c-card:nth-child(6){animation-delay:0.3s;}
+
+/* ── MODAL ── */
+.modal-overlay{
+  display:none;position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);
+  animation:fadeIn 0.2s ease;
+}
+.modal-overlay.active{display:flex;flex-direction:column;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+.modal-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 24px;
+  background:rgba(17,17,24,0.98);
+  border-bottom:1px solid rgba(189,118,255,0.2);
+  flex-shrink:0;
+}
+.modal-title{
+  font-size:13px;font-weight:700;color:var(--kurly-light);
+  display:flex;align-items:center;gap:10px;letter-spacing:0.3px;
+}
+.modal-title-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--kurly-light);animation:pulse 1.8s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.modal-close{
+  width:32px;height:32px;border-radius:8px;border:1px solid var(--border);
+  background:rgba(255,255,255,0.05);color:var(--muted);
+  font-size:18px;cursor:pointer;display:flex;align-items:center;
+  justify-content:center;transition:all 0.15s;line-height:1;
+}
+.modal-close:hover{background:rgba(255,255,255,0.1);color:var(--text);}
+.modal-iframe{flex:1;border:none;width:100%;background:#08080f;}
+
+/* ── HEADER BUTTON ── */
+.analysis-btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:6px 14px;border-radius:8px;
+  background:rgba(189,118,255,0.1);
+  border:1px solid rgba(189,118,255,0.3);
+  color:var(--kurly-light);font-size:11px;font-weight:700;
+  letter-spacing:0.5px;cursor:pointer;
+  transition:all 0.18s ease;white-space:nowrap;
+  font-family:'Noto Sans KR',sans-serif;
+}
+.analysis-btn:hover{
+  background:rgba(189,118,255,0.2);
+  border-color:rgba(189,118,255,0.55);
+  box-shadow:0 0 16px rgba(189,118,255,0.18);
+  transform:translateY(-1px);
+}
+.analysis-btn svg{flex-shrink:0;}
+</style>
+</head>
+<body>
+
+<!-- ══ BANNER ══ -->
+<div class="banner">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+  Kurly 브랜드 마케터 (콘텐츠) — 데이터 기반 콘텐츠 전략 대시보드
+  <div class="banner-right">
+    <span class="b-tag">식품 834 SKU 분석 기반</span>
+    <span class="b-tag">6대 콘텐츠 축</span>
+    <span class="b-tag">2026.05</span>
+  </div>
+</div>
+
+<!-- ══ HEADER ══ -->
+<header class="header">
+  <div class="header-inner">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:0;">
+      <div class="tag" style="margin-bottom:0;">Brand Marketer Content Strategy</div>
+      <button class="analysis-btn" onclick="openModal()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+          <polyline points="10 9 9 9 8 9"/>
+        </svg>
+        Kurly 경쟁사(3사) Multichannel 분석
+      </button>
+    </div>
+    <h1>Kurly 브랜드 마케팅 전략</h1>
+    <div class="header-sub">
+      <span>식품 카테고리 3사 경쟁 분석* → 브랜드 마케터 실행 전략으로 전환</span>
+      <div class="date-badge">2026.05.12</div>
+    </div>
+    <div style="margin-top:8px;font-size:10px;color:var(--muted);font-weight:400;">* 우측 상단 Kurly 경쟁사(3사) Multichannel 분석 페이지 참고</div>
+  </div>
+</header>
+
+<div class="main">
+
+<!-- ══ INSIGHT STRIP ══ -->
+<div class="insight-strip mb-48" style="margin-bottom:48px;">
+  <div class="is-item">
+    <div class="is-label">독점 콘텐츠 자산</div>
+    <div class="is-val">베이커리<br>142<span style="font-size:14px;font-weight:500;letter-spacing:0.5px;">개</span></div>
+    <div class="is-sub">경쟁사 미진입 — SNS 바이럴 최적 구간</div>
+  </div>
+  <div class="is-item">
+    <div class="is-label">할인율 격차<br>(vs Coupang)</div>
+    <div class="is-val">-20%</div>
+    <div class="is-sub">Kurly 할인율이 Coupang보다 20%포인트 낮음 · 가치·큐레이션으로 전환 필요</div>
+  </div>
+  <div class="is-item">
+    <div class="is-label">리뷰 상한 이슈</div>
+    <div class="is-val">9,999+<span style="font-size:14px;font-weight:500;letter-spacing:0.5px;">건</span></div>
+    <div class="is-sub">실수치 불투명 → 콘텐츠 신뢰 자산으로 대체</div>
+  </div>
+  <div class="is-item">
+    <div class="is-label">레스토랑 브랜드 입점</div>
+    <div class="is-val">숭의가든<br>외</div>
+    <div class="is-sub">경쟁사 없는 스토리텔링 소재 다수 보유</div>
+  </div>
+</div>
+
+<!-- ══ SECTION 1: 6대 콘텐츠 ══ -->
+<div class="sec-title"><div class="sec-num gold">★</div>6대 콘텐츠 전략 — 방향 · 기대효과 · 한줄 메세지</div>
+
+<div class="content-grid">
+
+  <!-- CARD 1: 베이커리 언박싱 -->
+  <div class="c-card theme-gold">
+    <div class="c-card-top">
+      <div class="c-icon">🥐</div>
+      <div class="c-category">베이커리 / 디저트 · SNS 바이럴</div>
+      <div class="c-title">Kurly 한정 베이커리<br>언박싱 콘텐츠 시리즈</div>
+      <div class="c-desc">경쟁사(Coupang·SSG) 미진입 구간인 베이커리 142개를 SNS 바이럴의 핵심 소재로 전환. 시각적 완성도가 높은 디저트 카테고리를 숏폼·릴스 언박싱으로 기획.</div>
+    </div>
+    <div class="c-card-mid">
+      <div class="c-section-label">콘텐츠 제작 및 운영 방향</div>
+      <div class="c-direction-list">
+        <div class="c-dir-item"><span class="c-dir-dot"></span><span>월 1회 시즌 한정 디저트 큐레이션 박스 — 개봉 순간을 릴스·숏폼으로 제작</span></div>
+        <div class="c-dir-item"><span class="c-dir-dot"></span><span>입점 파티쉐·브랜드 스토리 인터뷰 → 인스타그램 카드뉴스 + 롱폼 매거진</span></div>
+        <div class="c-dir-item"><span class="c-dir-dot"></span><span>"Kurly에서만 살 수 있어요" 해시태그 캠페인 — UGC 리포스팅 루프 설계</span></div>
+        <div style="font-size:10px;color:var(--muted);line-height:1.55;padding:4px 0 4px 13px;">* UGC(User Generated Content): 소비자가 직접 만든 후기·사진·영상 콘텐츠. 브랜드가 이를 공식 채널에 재게시(리포스팅)해 자연스러운 홍보 순환을 만드는 방식.</div>
+        <div class="c-dir-item"><span class="c-dir-dot"></span><span>오프라인 팝업 베이커리 연계 — 온·오프 경험 통합 콘텐츠 아카이브</span></div>
+      </div>
+    </div>
+    <div class="c-card-bottom">
+      <div class="c-section-label">기대 효과</div>
+      <div class="c-effect-row">
+        <span class="c-effect-chip">SNS 도달 확대</span>
+        <span class="c-effect-chip">브랜드 차별화</span>
+        <span class="c-effect-chip">UGC 생성</span>
+        <span class="c-effect-chip">고마진 카테고리 트래픽</span>
+      </div>
+      <div class="c-message-label">한줄 메세지</div>
+      <div class="c-message">"Kurly에서만 만날 수 있는 디저트 — 열어보는 순간이 콘텐츠가 됩니다"</div>
+    </div>
+  </div>
+
+  <!-- CARD 2: 레스토랑 브랜드 스토리텔링 -->
+  <div class="c-card theme-coral">
+    <div class="c-card-top">
+      <div class="c-icon">🍖</div>
+      <div class="c-category">정육 / 계란 · 브랜드 스토리</div>
+      <div class="c-title">레스토랑 브랜드<br>입점 스토리텔링 콘텐츠</div>
+      <div class="c-desc">숭의가든·사미헌·조선호텔·압구정주꾸미 등 리뷰 9,999+ 레스토랑 브랜드의 스토리를 콘텐츠로 전환. 가격 경쟁 대신 브랜드 신뢰와 품질을 전면에 내세움.</div>
+    </div>
+    <div class="c-card-mid">
+      <div class="c-section-label">콘텐츠 제작 및 운영 방향</div>
+      <div class="c-direction-list">
+        <div class="c-dir-item"><span class="c-dir-dot"></span><span>셰프 인터뷰 + 레시피 비하인드 → 유튜브 미니다큐 시리즈 기획</span></div>
+        <div class="c-dir-item"><span class="c-dir-dot"></span><span>레스토랑 오리지널 vs Kurly HMR 비교 — 맛 검증형 릴스 포맷</span></div>
+        <div style="font-size:10px;color:var(--muted);line-height:1.55;padding:4px 0 4px 13px;">* HMR(Home Meal Replacement): 가정 간편식. 별도 조리 없이 또는 간단한 조리만으로 바로 먹을 수 있도록 만들어진 식품.</div>
+        <div class="c-dir-item"><span class="c-dir-dot"></span><span>9,999+ 리뷰 상품 중심 "Kurly 명예의 전당" 정기 콘텐츠 코너 운영</span></div>
+        <div class="c-dir-item"><span class="c-dir-dot"></span><span>KF365 자체 브랜드 원산지·생산 과정 투명성 콘텐츠 → 신뢰도 구축</span></div>
+      </div>
+    </div>
+    <div class="c-card-bottom">
+      <div class="c-section-label">기대 효과</div>
+      <div class="c-effect-row">
+        <span class="c-effect-chip">프리미엄 포지셔닝</span>
+        <span class="c-effect-chip">리뷰 신뢰 보완</span>
+        <span class="c-effect-chip">객단가 방어</span>
+        <span class="c-effect-chip">브랜드 충성도</span>
+      </div>
+      <div class="c-message-label">한줄 메세지</div>
+      <div class="c-message">"레스토랑의 레시피가 당신의 주방으로 — Kurly가 큐레이션한 맛의 근거"</div>
+    </div>
+  </div>
+
+  <!-- CARD 3: 밀키트 라이프스타일 -->
+  <div class="c-card theme-blue">
+    <div class="c-card-top">
+      <div class="c-icon">🍱</div>
+      <div class="c-category">간편식 / 밀키트 · 라이프스타일</div>
+      <div class="c-title">오늘 저녁 루틴 콘텐츠<br>— 밀키트 라이프스타일</div>
+      <div class="c-desc">밀키트 161개 기반의 반복 구매 행동을 콘텐츠 루틴으로 설계. 평균가 19,159원의 가치를 '한 끼 솔루션'으로 포지셔닝해 Coupang 대비 가격 저항을 해소.</div>
+    </div>
+    <div class="c-card-mid">
+      <div class="c-section-label">콘텐츠 제작 및 운영 방향</div>
+      <div class="c-direction-list">
+        <div class="c-dir-item"><span class="c-dir-dot"></span><span>"오늘 저녁 뭐 먹지?" 시리즈 — 요일·상황별 밀키트 추천 숏폼 주 3회</span></div>
+        <div class="c-dir-item"><span class="c-dir-dot"></span><span>컬리패스 구독 연계 위클리 밀플랜 콘텐츠 — 앱 내 온드미디어 코너 운영</span></div>
+        <div class="c-dir-item"><span class="c-dir-dot"></span><span>정육×밀키트 식사 세트 번들 개봉·조리 과정 15초 숏폼 제작</span></div>
+        <div class="c-dir-item"><span class="c-dir-dot"></span><span>인플루언서 "일주일 Kurly 밀키트만 먹기" 챌린지 기획 → 바이럴 유도</span></div>
+      </div>
+    </div>
+    <div class="c-card-bottom">
+      <div class="c-section-label">기대 효과</div>
+      <div class="c-effect-row">
+        <span class="c-effect-chip">반복구매 락인</span>
+        <span class="c-effect-chip">구독 전환</span>
+        <span class="c-effect-chip">인플루언서 바이럴</span>
+        <span class="c-effect-chip">앱 체류시간 ↑</span>
+      </div>
+      <div class="c-message-label">한줄 메세지</div>
+      <div class="c-message">"오늘 저녁 고민은 Kurly에 맡기세요 — 19,000원짜리 레스토랑이 집에 옵니다"</div>
+    </div>
+  </div>
+
+  <!-- CARD 4: 채소/과일 위클리박스 -->
+  <div class="c-card theme-green">
+    <div class="c-card-top">
+      <div class="c-icon">🥬</div>
+      <div class="c-category">채소 / 과일 · 정기구독</div>
+      <div class="c-title">신선도 보장 위클리박스<br>구독 유입 콘텐츠</div>
+      <div class="c-desc">채소/과일 124개 평균가 7,977원 — 가격 경쟁력을 가진 구간을 콘텐츠로 락인. SSG의 초저가 신선식품 대비 '새벽 콜드체인 신선도'를 가치로 전면화.</div>
+    </div>
+    <div class="c-card-mid">
+      <div class="c-section-label">콘텐츠 제작 및 운영 방향</div>
+      <div class="c-direction-list">
+        <div class="c-dir-item"><span class="c-dir-dot"></span><span>새벽 4시 새벽배송 타임랩스 → "신선도의 이유" 콘텐츠로 신뢰 구축</span></div>
+        <div class="c-dir-item"><span class="c-dir-dot"></span><span>위클리 박스 개봉 순간 비교 — 마트 vs Kurly 신선도 비주얼 콘텐츠</span></div>
+        <div class="c-dir-item"><span class="c-dir-dot"></span><span>제철 채소 활용 레시피 카드 — 앱 내 매거진 + 인스타그램 카드뉴스</span></div>
+        <div class="c-dir-item"><span class="c-dir-dot"></span><span>컬리패스 위클리박스 구독 전환 퍼포먼스 콘텐츠 기획 · AB 테스트</span></div>
+        <div style="font-size:10px;color:var(--muted);line-height:1.55;padding:4px 0 4px 13px;">* AB 테스트(A/B Test): 두 가지 버전(A안·B안)의 콘텐츠나 광고를 각각 다른 사용자 그룹에 노출해, 클릭률·구독 전환율 등 성과를 비교하는 실험 방법.</div>
+      </div>
+    </div>
+    <div class="c-card-bottom">
+      <div class="c-section-label">기대 효과</div>
+      <div class="c-effect-row">
+        <span class="c-effect-chip">신선도 차별화</span>
+        <span class="c-effect-chip">구독 전환</span>
+        <span class="c-effect-chip">SSG 대비 포지셔닝</span>
+        <span class="c-effect-chip">재구매율 ↑</span>
+      </div>
+      <div class="c-message-label">한줄 메세지</div>
+      <div class="c-message">"새벽 4시에 출발한 채소 — 가장 신선한 순간에 당신의 식탁에 닿습니다"</div>
+    </div>
+  </div>
+
+  <!-- CARD 5: 인플루언서 / IP 콜라보 -->
+  <div class="c-card theme-purple">
+    <div class="c-card-top">
+      <div class="c-icon">🤝</div>
+      <div class="c-category">전 카테고리 · 인플루언서 / IP 콜라보</div>
+      <div class="c-title">식(食)문화 인플루언서<br>콜라보레이션 기획</div>
+      <div class="c-desc">Coupang의 리뷰 생태계(969K/상품)에 맞서는 Kurly의 전략 — 대용량 리뷰 볼륨 대신 큐레이션 신뢰도 높은 인플루언서와의 콜라보로 품질 신호를 전달.</div>
+    </div>
+    <div class="c-card-mid">
+      <div class="c-section-label">콘텐츠 제작 및 운영 방향</div>
+      <div class="c-direction-list">
+        <div class="c-dir-item"><span class="c-dir-dot"></span><span>미식 유튜버·푸드 인스타그래머와 "Kurly 픽" 월간 큐레이션 콜라보</span></div>
+        <div class="c-dir-item"><span class="c-dir-dot"></span><span>라이프스타일 IP(요리책 저자·셰프)와 레시피 콘텐츠 공동 기획·제작</span></div>
+        <div class="c-dir-item"><span class="c-dir-dot"></span><span>팔로워 1~10만 마이크로 인플루언서 다수 활용 → 신뢰도 × 도달 균형</span></div>
+        <div class="c-dir-item"><span class="c-dir-dot"></span><span>콜라보 한정 상품 패키지 기획 → 콘텐츠와 커머스를 직접 연결</span></div>
+      </div>
+    </div>
+    <div class="c-card-bottom">
+      <div class="c-section-label">기대 효과</div>
+      <div class="c-effect-row">
+        <span class="c-effect-chip">신규 유저 유입</span>
+        <span class="c-effect-chip">리뷰 격차 보완</span>
+        <span class="c-effect-chip">큐레이션 신뢰 강화</span>
+        <span class="c-effect-chip">한정판 GMV ↑</span>
+      </div>
+      <div class="c-message-label">한줄 메세지</div>
+      <div class="c-message">"96만 리뷰보다 믿는 사람 한 명의 추천 — Kurly는 큐레이션으로 신뢰를 쌓습니다"</div>
+    </div>
+  </div>
+
+  <!-- CARD 6: 가격 가치 재정의 -->
+  <div class="c-card theme-teal">
+    <div class="c-card-top">
+      <div class="c-icon">💡</div>
+      <div class="c-category">브랜드 인식 · 가치 커뮤니케이션</div>
+      <div class="c-title">할인율 격차 극복<br>— 가치 재정의 콘텐츠</div>
+      <div class="c-desc">Coupang 31.8% vs Kurly 11.3% — 20%p 할인율 격차를 소비자가 체감하지 않도록, "할인이 아닌 가치"를 기준으로 브랜드 인식을 재설계하는 콘텐츠.</div>
+    </div>
+    <div class="c-card-mid">
+      <div class="c-section-label">콘텐츠 제작 및 운영 방향</div>
+      <div class="c-direction-list">
+        <div class="c-dir-item"><span class="c-dir-dot"></span><span>"이 가격에 이 퀄리티" 포맷 — 상품 기획 비하인드·원재료 원산지 투명 공개</span></div>
+        <div class="c-dir-item"><span class="c-dir-dot"></span><span>대용량 묶음(Coupang) vs 소량 프리미엄(Kurly) — "나에게 맞는 소비" 비교 콘텐츠</span></div>
+        <div class="c-dir-item"><span class="c-dir-dot"></span><span>Kurly MD가 직접 말하는 상품 선정 기준 → 온드미디어 연재 시리즈</span></div>
+        <div class="c-dir-item"><span class="c-dir-dot"></span><span>번들 세트 구성 시 체감 할인율 강조 — "세트로 사면 달라집니다" 캠페인</span></div>
+      </div>
+    </div>
+    <div class="c-card-bottom">
+      <div class="c-section-label">기대 효과</div>
+      <div class="c-effect-row">
+        <span class="c-effect-chip">가격 저항 완화</span>
+        <span class="c-effect-chip">브랜드 선호도 ↑</span>
+        <span class="c-effect-chip">객단가 유지</span>
+        <span class="c-effect-chip">번들 GMV 기여</span>
+      </div>
+      <div class="c-message-label">한줄 메세지</div>
+      <div class="c-message">"Kurly의 제품 가격이 합리적인 근거 — 콘텐츠로 보여드립니다"</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ SECTION 2: 채널×콘텐츠 매트릭스 ══ -->
+<div class="sec-title"><div class="sec-num">1</div>채널 × 콘텐츠 우선순위 매트릭스</div>
+
+<div class="channel-matrix mb-48">
+  <table class="cm-table">
+    <thead>
+      <tr>
+        <th style="width:6%">우선순위</th>
+        <th style="width:20%">콘텐츠</th>
+        <th style="width:18%">주력 채널</th>
+        <th style="width:14%">포맷</th>
+        <th style="width:16%">핵심 KPI</th>
+        <th style="width:26%">Coupang 대비 차별점</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- ── P1: 즉시 실행 ── -->
+      <tr>
+        <td rowspan="3" style="text-align:center;border-right:1px solid var(--border);">
+          <span class="priority-badge pri-1"><span class="pri-dot"></span>P1</span>
+          <div style="font-size:10px;color:#ff6b6b;margin-top:5px;font-weight:600;">즉시<br>실행</div>
+        </td>
+        <td>
+          <div class="cm-content-name" style="color:var(--gold)">🥐 베이커리 언박싱</div>
+          <div class="cm-content-sub">독점 카테고리 바이럴</div>
+        </td>
+        <td>
+          <span class="ch-badge" style="background:rgba(245,200,66,0.12);color:var(--gold);border:1px solid rgba(245,200,66,0.2);">인스타그램</span>
+          <span class="ch-badge" style="background:rgba(245,200,66,0.12);color:var(--gold);border:1px solid rgba(245,200,66,0.2);">틱톡</span>
+        </td>
+        <td style="font-size:12px;">릴스 15~30초<br>카드뉴스</td>
+        <td><span class="kpi-pill" style="background:rgba(245,200,66,0.1);color:var(--gold);">도달 · 저장수 · UGC</span></td>
+        <td style="font-size:12px;color:var(--muted);">경쟁사 미진입 — 완전 블루오션</td>
+      </tr>
+      <tr style="background:rgba(232,35,42,0.02);">
+        <td>
+          <div class="cm-content-name" style="color:var(--blue)">🍱 밀키트 라이프스타일</div>
+          <div class="cm-content-sub">반복구매 루틴화</div>
+        </td>
+        <td>
+          <span class="ch-badge" style="background:rgba(59,130,246,0.12);color:var(--blue);border:1px solid rgba(59,130,246,0.2);">인스타그램</span>
+          <span class="ch-badge" style="background:rgba(59,130,246,0.12);color:var(--blue);border:1px solid rgba(59,130,246,0.2);">앱 온드미디어</span>
+        </td>
+        <td style="font-size:12px;">숏폼 15초<br>밀플랜 카드</td>
+        <td><span class="kpi-pill" style="background:rgba(59,130,246,0.1);color:var(--blue);">구독전환 · 재구매율</span></td>
+        <td style="font-size:12px;color:var(--muted);">Coupang은 대용량 생필품 — 밀키트 큐레이션 공백</td>
+      </tr>
+      <tr style="background:rgba(232,35,42,0.02);">
+        <td>
+          <div class="cm-content-name" style="color:var(--kurly-light)">🤝 인플루언서 콜라보</div>
+          <div class="cm-content-sub">신뢰도 × 도달 확장</div>
+        </td>
+        <td>
+          <span class="ch-badge" style="background:rgba(189,118,255,0.12);color:var(--kurly-light);border:1px solid rgba(189,118,255,0.2);">인스타그램</span>
+          <span class="ch-badge" style="background:rgba(189,118,255,0.12);color:var(--kurly-light);border:1px solid rgba(189,118,255,0.2);">유튜브</span>
+          <span class="ch-badge" style="background:rgba(189,118,255,0.12);color:var(--kurly-light);border:1px solid rgba(189,118,255,0.2);">블로그</span>
+        </td>
+        <td style="font-size:12px;">피드·릴스<br>리뷰 영상</td>
+        <td><span class="kpi-pill" style="background:rgba(189,118,255,0.1);color:var(--kurly-light);">신규유입 · CVR</span></td>
+        <td style="font-size:12px;color:var(--muted);">Coupang 리뷰 볼륨 vs Kurly 큐레이션 신뢰 — 질적 전환</td>
+      </tr>
+      <!-- ── P2: 단기 ── -->
+      <tr style="border-top:2px solid var(--border);">
+        <td rowspan="2" style="text-align:center;border-right:1px solid var(--border);">
+          <span class="priority-badge pri-2"><span class="pri-dot"></span>P2</span>
+          <div style="font-size:10px;color:var(--gold);margin-top:5px;font-weight:600;">단기<br>확장</div>
+        </td>
+        <td>
+          <div class="cm-content-name" style="color:var(--coral)">🍖 레스토랑 스토리</div>
+          <div class="cm-content-sub">브랜드 신뢰 구축</div>
+        </td>
+        <td>
+          <span class="ch-badge" style="background:rgba(255,107,107,0.12);color:var(--coral);border:1px solid rgba(255,107,107,0.2);">유튜브</span>
+          <span class="ch-badge" style="background:rgba(255,107,107,0.12);color:var(--coral);border:1px solid rgba(255,107,107,0.2);">Kurly 매거진</span>
+        </td>
+        <td style="font-size:12px;">미니다큐 3~5분<br>롱폼 아티클</td>
+        <td><span class="kpi-pill" style="background:rgba(255,107,107,0.1);color:var(--coral);">조회수 · 브랜드 인지</span></td>
+        <td style="font-size:12px;color:var(--muted);">레스토랑 브랜드 독점 입점 — 소재 자체가 차별화</td>
+      </tr>
+      <tr style="background:rgba(245,200,66,0.015);">
+        <td>
+          <div class="cm-content-name" style="color:var(--green)">🥬 신선 위클리박스</div>
+          <div class="cm-content-sub">새벽배송 신선도 강조</div>
+        </td>
+        <td>
+          <span class="ch-badge" style="background:rgba(34,197,94,0.12);color:var(--green);border:1px solid rgba(34,197,94,0.2);">인스타그램</span>
+          <span class="ch-badge" style="background:rgba(34,197,94,0.12);color:var(--green);border:1px solid rgba(34,197,94,0.2);">유튜브 쇼츠</span>
+        </td>
+        <td style="font-size:12px;">타임랩스·ASMR<br>레시피 카드</td>
+        <td><span class="kpi-pill" style="background:rgba(34,197,94,0.1);color:var(--green);">구독전환 · CTR</span></td>
+        <td style="font-size:12px;color:var(--muted);">SSG 초저가 대비 새벽 콜드체인 신선도 우위</td>
+      </tr>
+      <!-- ── P3: 중기 ── -->
+      <tr style="border-top:2px solid var(--border);">
+        <td style="text-align:center;border-right:1px solid var(--border);">
+          <span class="priority-badge pri-3"><span class="pri-dot"></span>P3</span>
+          <div style="font-size:10px;color:var(--muted);margin-top:5px;font-weight:600;">중기<br>캠페인</div>
+        </td>
+        <td>
+          <div class="cm-content-name" style="color:var(--teal)">💡 가치 재정의 캠페인</div>
+          <div class="cm-content-sub">할인율 인식 격차 해소</div>
+        </td>
+        <td>
+          <span class="ch-badge" style="background:rgba(45,212,191,0.12);color:var(--teal);border:1px solid rgba(45,212,191,0.2);">앱 온드미디어</span>
+          <span class="ch-badge" style="background:rgba(45,212,191,0.12);color:var(--teal);border:1px solid rgba(45,212,191,0.2);">인스타그램</span>
+        </td>
+        <td style="font-size:12px;">MD 인터뷰<br>비교 카드뉴스</td>
+        <td><span class="kpi-pill" style="background:rgba(45,212,191,0.1);color:var(--teal);">브랜드 선호 · 번들 GMV</span></td>
+        <td style="font-size:12px;color:var(--muted);">가격 경쟁 탈피 — 큐레이션 스토리로 프리미엄 정당화</td>
+      </tr>
+      <!-- ── P4: 장기 ── -->
+      <tr style="border-top:2px solid var(--border);">
+        <td rowspan="2" style="text-align:center;border-right:1px solid var(--border);">
+          <span class="priority-badge pri-4"><span class="pri-dot"></span>P4</span>
+          <div style="font-size:10px;color:#f472b6;margin-top:5px;font-weight:600;">장기<br>자산화</div>
+        </td>
+        <td>
+          <div class="cm-content-name" style="color:#fb923c">📺 Kurly 오리지널 IP</div>
+          <div class="cm-content-sub">식문화 미디어 브랜드화</div>
+        </td>
+        <td>
+          <span class="ch-badge" style="background:rgba(251,146,60,0.12);color:#fb923c;border:1px solid rgba(251,146,60,0.2);">유튜브</span>
+          <span class="ch-badge" style="background:rgba(251,146,60,0.12);color:#fb923c;border:1px solid rgba(251,146,60,0.2);">OTT 제휴</span>
+        </td>
+        <td style="font-size:12px;">미니다큐 시리즈<br>오리지널 예능</td>
+        <td><span class="kpi-pill" style="background:rgba(251,146,60,0.1);color:#fb923c;">브랜드 자산 · 구독자</span></td>
+        <td style="font-size:12px;color:var(--muted);">커머스를 넘어 식문화 콘텐츠 IP로 — 경쟁사 모방 불가 영역</td>
+      </tr>
+      <tr style="background:rgba(244,114,182,0.015);">
+        <td>
+          <div class="cm-content-name" style="color:#f472b6">🌏 글로벌 K-푸드 콘텐츠</div>
+          <div class="cm-content-sub">해외 신규 시장 인지 확장</div>
+        </td>
+        <td>
+          <span class="ch-badge" style="background:rgba(244,114,182,0.12);color:#f472b6;border:1px solid rgba(244,114,182,0.2);">유튜브</span>
+          <span class="ch-badge" style="background:rgba(244,114,182,0.12);color:#f472b6;border:1px solid rgba(244,114,182,0.2);">틱톡 글로벌</span>
+        </td>
+        <td style="font-size:12px;">해외 인플루언서<br>한류 연계 숏폼</td>
+        <td><span class="kpi-pill" style="background:rgba(244,114,182,0.1);color:#f472b6;">해외 도달 · 신규유입</span></td>
+        <td style="font-size:12px;color:var(--muted);">K-Food 한류 연계 — 국내 경쟁사 대비 글로벌 선점 기회</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══ SECTION 3: 실행 타임라인 ══ -->
+<div class="sec-title"><div class="sec-num">2</div>콘텐츠 실행 단/중장기 타임라인</div>
+
+<div class="timeline">
+  <div class="tl-track">
+
+    <!-- PHASE 1 -->
+    <div class="tl-node-wrap p1">
+      <div class="tl-period">Month 1 ~ 2</div>
+      <div class="tl-badge">01</div>
+      <div class="tl-vline"></div>
+      <div class="tl-card">
+        <div class="tl-label">Phase 1 — 즉시 실행</div>
+        <div class="tl-item">
+          <div class="tl-dot">🥐</div>
+          <div>
+            <div class="tl-item-main">베이커리 언박싱 릴스 런칭</div>
+            <div class="tl-item-sub">독점 구간 선점 — 경쟁사 부재로 빠른 인지 확보</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">🍖</div>
+          <div>
+            <div class="tl-item-main">레스토랑 브랜드 인터뷰 1편</div>
+            <div class="tl-item-sub">숭의가든·사미헌 — 리뷰 9,999+ 소재 즉시 활용</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">🍱</div>
+          <div>
+            <div class="tl-item-main">밀키트 "오늘 저녁" 숏폼 시작</div>
+            <div class="tl-item-sub">주 3회 정기 발행 → 알고리즘 노출 누적</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARROW 1→2 -->
+    <div class="tl-arrow">
+      <div class="tl-arrow-line"></div>
+    </div>
+
+    <!-- PHASE 2 -->
+    <div class="tl-node-wrap p2">
+      <div class="tl-period">Month 3 ~ 4</div>
+      <div class="tl-badge">02</div>
+      <div class="tl-vline"></div>
+      <div class="tl-card">
+        <div class="tl-label">Phase 2 — 확장</div>
+        <div class="tl-item">
+          <div class="tl-dot">🤝</div>
+          <div>
+            <div class="tl-item-main">인플루언서 콜라보 캠페인 런칭</div>
+            <div class="tl-item-sub">마이크로 인플루언서 5~10인 동시 운영</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">🥬</div>
+          <div>
+            <div class="tl-item-main">신선 위클리박스 구독 콘텐츠</div>
+            <div class="tl-item-sub">타임랩스·ASMR — 구독 전환 퍼포먼스 연계</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">📖</div>
+          <div>
+            <div class="tl-item-main">Kurly 매거진 온드미디어 리뉴얼</div>
+            <div class="tl-item-sub">MD 인터뷰 + 제철 레시피 연재</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARROW 2→3 -->
+    <div class="tl-arrow">
+      <div class="tl-arrow-line"></div>
+    </div>
+
+    <!-- PHASE 3 -->
+    <div class="tl-node-wrap p3">
+      <div class="tl-period">Month 5 ~ 6</div>
+      <div class="tl-badge">03</div>
+      <div class="tl-vline"></div>
+      <div class="tl-card">
+        <div class="tl-label">Phase 3 — 캠페인화</div>
+        <div class="tl-item">
+          <div class="tl-dot">🎪</div>
+          <div>
+            <div class="tl-item-main">시즌 한정 베이커리 박스 + 팝업</div>
+            <div class="tl-item-sub">오프라인 팝업 연계 온·오프 통합 캠페인</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">💡</div>
+          <div>
+            <div class="tl-item-main">"Kurly 가격의 합리적인 근거" 캠페인</div>
+            <div class="tl-item-sub">가치 재정의 메시지 전방위 채널 통합 집행</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">🛍</div>
+          <div>
+            <div class="tl-item-main">IP 콜라보 한정 상품 출시</div>
+            <div class="tl-item-sub">콘텐츠 → 커머스 직결 — GMV 기여 측정</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── 중장기 구분선 ── -->
+  <div style="display:flex;align-items:center;gap:16px;margin:28px 0 24px;">
+    <div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent);"></div>
+    <div style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+      color:var(--muted);padding:4px 16px;border:1px solid var(--border);border-radius:20px;white-space:nowrap;">
+      중장기 전략
+    </div>
+    <div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent);"></div>
+  </div>
+
+  <div class="tl-track">
+
+    <!-- PHASE 4 -->
+    <div class="tl-node-wrap p4">
+      <div class="tl-period">Month 7 ~ 12</div>
+      <div class="tl-badge">04</div>
+      <div class="tl-vline"></div>
+      <div class="tl-card">
+        <div class="tl-label">Phase 4 — 브랜드 자산화</div>
+        <div class="tl-item">
+          <div class="tl-dot">📺</div>
+          <div>
+            <div class="tl-item-main">Kurly 오리지널 콘텐츠 IP 론칭</div>
+            <div class="tl-item-sub">자체 유튜브 시리즈 — 식문화 미디어 브랜드로 확장</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">🏆</div>
+          <div>
+            <div class="tl-item-main">"Kurly 어워즈" 연간 큐레이션 캠페인</div>
+            <div class="tl-item-sub">연 1회 카테고리별 베스트 상품 선정 → 언론·SNS 바이럴</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">🎯</div>
+          <div>
+            <div class="tl-item-main">퍼스트파티 데이터 기반 초개인화 콘텐츠</div>
+            <div class="tl-item-sub">구매 패턴 분석 → 앱 내 맞춤형 콘텐츠 추천 고도화</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARROW 4→5 -->
+    <div class="tl-arrow">
+      <div class="tl-arrow-line" style="background:linear-gradient(90deg,rgba(251,146,60,0.4),rgba(244,114,182,0.2));">
+        <span style="position:absolute;right:-1px;top:50%;transform:translateY(-50%);
+          border-left:8px solid rgba(251,146,60,0.5);
+          border-top:5px solid transparent;border-bottom:5px solid transparent;"></span>
+      </div>
+    </div>
+
+    <!-- PHASE 5 -->
+    <div class="tl-node-wrap p5">
+      <div class="tl-period">Month 13 ~ 18+</div>
+      <div class="tl-badge">05</div>
+      <div class="tl-vline"></div>
+      <div class="tl-card">
+        <div class="tl-label">Phase 5 — 생태계 확장</div>
+        <div class="tl-item">
+          <div class="tl-dot">🌐</div>
+          <div>
+            <div class="tl-item-main">커뮤니티·UGC 플랫폼 구축</div>
+            <div class="tl-item-sub">Kurly 고객이 직접 만드는 레시피·리뷰 콘텐츠 생태계 조성</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">🤖</div>
+          <div>
+            <div class="tl-item-main">AI 기반 콘텐츠 퍼포먼스 최적화</div>
+            <div class="tl-item-sub">채널별 효율 자동 분석 → 예산·소재 실시간 최적 배분</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">🌏</div>
+          <div>
+            <div class="tl-item-main">글로벌 K-푸드 콘텐츠 확장</div>
+            <div class="tl-item-sub">한류 연계 K-Food 바이럴 — 해외 인플루언서 콜라보 기획</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 빈 칸 (레이아웃 균형) -->
+    <div class="tl-node-wrap" style="visibility:hidden;flex:1;"></div>
+
+  </div>
+</div>
+
+<!-- ══ SECTION 4: 기대 KPI ══ -->
+<div class="sec-title"><div class="sec-num">3</div>6대 콘텐츠 통합 기대 효과</div>
+
+<div class="kpi-row-grid">
+  <div class="kpi-box" style="border-top:3px solid var(--gold);">
+    <div class="kpi-box-label">SNS 도달 목표</div>
+    <div class="kpi-box-val" style="color:var(--gold);">월 300만+</div>
+    <div class="kpi-box-sub">베이커리·밀키트 숏폼 릴스 누적 — 독점 카테고리 바이럴 효과</div>
+  </div>
+  <div class="kpi-box" style="border-top:3px solid var(--kurly-light);">
+    <div class="kpi-box-label">구독 전환 기여</div>
+    <div class="kpi-box-val">컬리패스 ↑</div>
+    <div class="kpi-box-sub">위클리박스·밀플랜 콘텐츠 → 반복구매 락인 → 패스 구독 자연 유도</div>
+  </div>
+  <div class="kpi-box" style="border-top:3px solid var(--green);">
+    <div class="kpi-box-label">브랜드 인지 개선</div>
+    <div class="kpi-box-val" style="color:var(--green);">프리미엄 강화</div>
+    <div class="kpi-box-sub">가치 재정의 + 레스토랑 스토리 — 할인율 격차 인식 완화, 객단가 방어</div>
+  </div>
+  <div class="kpi-box" style="border-top:3px solid var(--teal);">
+    <div class="kpi-box-label">콘텐츠→커머스 전환</div>
+    <div class="kpi-box-val" style="color:var(--teal);">GMV 직결</div>
+    <div class="kpi-box-sub">인플루언서 콜라보 한정 상품 + 번들 기획 — 콘텐츠 직접 매출 기여 측정</div>
+    <div style="font-size:9px;color:rgba(112,112,160,0.7);margin-top:6px;font-family:'DM Mono',monospace;line-height:1.5;">* GMV(Gross Merchandise Volume): 총 거래액</div>
+  </div>
+</div>
+
+</div>
+
+<footer class="footer">
+  Kurly 브랜드 마케터 (콘텐츠) 포지션 — 식품 3사 경쟁 분석 기반 콘텐츠 전략 대시보드 &nbsp;|&nbsp; 데이터 기준: 2026.05.07~12
+</footer>
+
+
+<!-- ══ MODAL: 경쟁사 분석 ══ -->
+<div class="modal-overlay" id="analysisModal">
+  <div class="modal-header">
+    <div class="modal-title">
+      <span class="modal-title-dot"></span>
+      Kurly 식품 카테고리 — 3사 경쟁사 분석 대시보드
+    </div>
+    <button class="modal-close" onclick="closeModal()" title="닫기">✕</button>
+  </div>
+  <iframe class="modal-iframe" id="analysisFrame" srcdoc="<!DOCTYPE html>
+<html lang=&quot;ko&quot;>
+<head>
+<meta charset=&quot;UTF-8&quot;>
+<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+<title>Kurly × Coupang × SSG — 식품 카테고리 3사 경쟁 분석 보고서</title>
+<link href=&quot;https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&amp;family=Bebas+Neue&amp;family=DM+Mono:wght@400;500&amp;display=swap&quot; rel=&quot;stylesheet&quot;>
+<script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js&quot;></script>
+<script src=&quot;https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js&quot;></script>
+<script>
+// datalabels 플러그인을 전역 등록 해제 상태로 유지 (개별 차트에서만 활성화)
+Chart.defaults.plugins.datalabels = {display: false};
+const ChartDataLabels = window['chartjs-plugin-datalabels'];
+</script>
+<style>
+:root {
+  --bg: #08080f;
+  --surface: #111118;
+  --surface2: #18181f;
+  --border: #252530;
+  --kurly: #5f0080;
+  --kurly-mid: #9b30c0;
+  --kurly-light: #bd76ff;
+  --coupang: #e8232a;
+  --coupang-light: #ff7075;
+  --ssg: #e8425a;
+  --ssg-light: #f79aaa;
+  --gold: #f5c842;
+  --green: #22c55e;
+  --blue: #3b82f6;
+  --text: #f0f0f8;
+  --muted: #7070a0;
+  --border-light: rgba(255,255,255,0.06);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;min-height:100vh;line-height:1.6;}
+
+body::before{
+  content:'';position:fixed;top:-300px;left:-300px;width:700px;height:700px;
+  background:radial-gradient(circle,rgba(95,0,128,0.12) 0%,transparent 65%);
+  pointer-events:none;z-index:0;
+}
+
+/* ── SCOPE BANNER ── */
+.scope-banner{
+  background:linear-gradient(90deg,rgba(245,200,66,0.12) 0%,rgba(245,200,66,0.04) 100%);
+  border-bottom:2px solid rgba(245,200,66,0.35);
+  padding:10px 56px;
+  font-size:12px;font-weight:700;letter-spacing:1.5px;
+  color:var(--gold);
+  display:flex;align-items:center;gap:10px;
+  position:relative;z-index:3;
+}
+.scope-banner svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:2;flex-shrink:0;}
+.scope-cats{
+  display:flex;gap:6px;margin-left:auto;
+}
+.scope-cat{
+  padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;
+  background:rgba(245,200,66,0.15);color:var(--gold);
+  border:1px solid rgba(245,200,66,0.3);letter-spacing:0.5px;
+}
+
+/* ── HEADER ── */
+.header{
+  position:relative;z-index:2;
+  padding:44px 56px 32px;
+  border-bottom:1px solid var(--border);
+  background:linear-gradient(180deg,rgba(95,0,128,0.07) 0%,transparent 100%);
+}
+.header-inner{max-width:1360px;margin:0 auto;}
+.tag{display:inline-block;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--kurly-light);margin-bottom:12px;font-weight:500;}
+.header h1{
+  font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,5.2vw,72px);
+  letter-spacing:2px;line-height:1;
+  background:linear-gradient(135deg,#fff 20%,var(--kurly-light) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.header-sub{margin-top:10px;font-size:13px;color:var(--muted);font-weight:300;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.brand-chips{display:flex;gap:8px;}
+.chip{padding:5px 14px;border-radius:100px;font-size:12px;font-weight:700;letter-spacing:0.5px;}
+.chip-k{background:rgba(95,0,128,0.35);color:var(--kurly-light);border:1px solid rgba(189,118,255,0.3);}
+.chip-c{background:rgba(232,35,42,0.2);color:#ff8a8d;border:1px solid rgba(232,35,42,0.3);}
+.chip-s{background:rgba(232,66,90,0.15);color:#f7a0b0;border:1px solid rgba(232,66,90,0.25);}
+.date-badge{margin-left:auto;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:8px;padding:5px 14px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* ── MAIN ── */
+.main{max-width:1360px;margin:0 auto;padding:44px 56px;position:relative;z-index:1;}
+
+/* ── SECTION TITLE ── */
+.sec-title{font-size:15px;font-weight:700;letter-spacing:0.5px;color:var(--text);margin:0 0 24px;display:flex;align-items:center;gap:12px;}
+.sec-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.sec-num{background:var(--kurly);color:white;width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+.sec-num.gold{background:rgba(245,200,66,0.2);color:var(--gold);border:1px solid rgba(245,200,66,0.4);width:28px;height:28px;font-size:16px;}
+
+/* ── FOOD SCOPE NOTE ── */
+.food-note{
+  background:rgba(245,200,66,0.06);border:1px solid rgba(245,200,66,0.2);
+  border-radius:14px;padding:18px 22px;margin-bottom:36px;
+  display:flex;gap:14px;align-items:flex-start;
+  font-size:12px;color:var(--muted);line-height:1.6;
+}
+.food-note-icon{font-size:20px;flex-shrink:0;margin-top:1px;}
+.food-note strong{color:var(--gold);}
+
+/* ── STRATEGY BLOCK ── */
+.strategy-block{
+  background:linear-gradient(135deg,rgba(95,0,128,0.18) 0%,rgba(189,118,255,0.05) 100%);
+  border:1px solid rgba(189,118,255,0.25);border-radius:20px;
+  padding:34px 38px;margin-bottom:48px;position:relative;overflow:hidden;
+}
+.strategy-block::before{
+  content:'FOOD STRATEGY';position:absolute;right:28px;top:20px;
+  font-family:'Bebas Neue',sans-serif;font-size:76px;
+  color:rgba(189,118,255,0.05);letter-spacing:4px;line-height:1;pointer-events:none;
+}
+.strategy-header{display:flex;align-items:flex-start;gap:16px;margin-bottom:26px;}
+.strategy-icon{width:46px;height:46px;border-radius:14px;background:var(--kurly);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.strategy-icon svg{width:22px;height:22px;stroke:white;fill:none;stroke-width:2;}
+.strategy-title{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--kurly-light);letter-spacing:1px;line-height:1.1;margin-bottom:5px;}
+.strategy-desc{font-size:12px;color:var(--muted);line-height:1.65;}
+.strategy-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px;}
+.str-card{background:rgba(0,0,0,0.25);border:1px solid rgba(189,118,255,0.14);border-top:3px solid;border-radius:14px;padding:18px;}
+.str-card-title{font-size:13px;font-weight:700;margin-bottom:8px;line-height:1.3;}
+.str-card-body{font-size:12px;color:var(--muted);line-height:1.6;}
+.str-card-body strong{color:#ddd;}
+.str-action{background:rgba(189,118,255,0.07);border-radius:8px;padding:10px 14px;margin-top:10px;font-size:11px;font-weight:600;letter-spacing:0.4px;text-transform:uppercase;}
+.strategy-bottom{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.str-kpi{background:rgba(0,0,0,0.2);border:1px solid var(--border-light);border-radius:12px;padding:14px;}
+.str-kpi-label{font-size:11px;color:var(--muted);margin-bottom:5px;letter-spacing:0.4px;}
+.str-kpi-val{font-family:'Bebas Neue',monospace;font-size:22px;color:var(--kurly-light);letter-spacing:1px;}
+.str-kpi-sub{font-size:11px;color:var(--muted);margin-top:4px;}
+
+/* ── KPI COMPARE ── */
+.kpi-compare{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:48px;}
+.kpi-col{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:22px;}
+.kpi-col.kurly-col{border-top:3px solid var(--kurly-light);}
+.kpi-col.coupang-col{border-top:3px solid var(--coupang);}
+.kpi-col.ssg-col{border-top:3px solid var(--ssg);}
+.kpi-col.summary-col{border-top:3px solid var(--gold);background:rgba(245,200,66,0.03);}
+.kpi-brand{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;}
+.kpi-brand.k{color:var(--kurly-light);}
+.kpi-brand.c{color:var(--coupang-light);}
+.kpi-brand.s{color:var(--ssg-light);}
+.kpi-brand.sum{color:var(--gold);}
+.kpi-row{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:10px;
+  padding:10px 12px;
+  margin-bottom:7px;
+  display:flex;flex-direction:column;gap:2px;
+}
+.kpi-row-label{
+  font-size:13px;font-weight:600;letter-spacing:0.3px;text-transform:none;
+  color:#c8c8e8;margin-bottom:2px;
+}
+.kpi-row-val{font-family:'DM Mono',monospace;font-size:16px;font-weight:500;line-height:1.2;}
+.kpi-row-val.highlight{color:var(--kurly-light);}
+.kpi-row-sub{font-size:10px;color:var(--muted);margin-top:1px;}
+
+.kpi-col.kurly-col .kpi-row{border-left:3px solid rgba(189,118,255,0.4);}
+.kpi-col.coupang-col .kpi-row{border-left:3px solid rgba(232,35,42,0.4);}
+.kpi-col.ssg-col .kpi-row{border-left:3px solid rgba(232,66,90,0.4);}
+.kpi-col.kurly-col .kpi-row:hover{background:rgba(189,118,255,0.07);}
+.kpi-col.coupang-col .kpi-row:hover{background:rgba(232,35,42,0.07);}
+.kpi-col.ssg-col .kpi-row:hover{background:rgba(232,66,90,0.07);}
+
+/* ── CHARTS ── */
+.charts-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px;}
+.charts-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-bottom:28px;}
+.chart-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px;}
+.chart-card.wide{grid-column:1/-1;}
+.chart-card h3{font-size:13px;font-weight:600;margin-bottom:3px;}
+.chart-card p{font-size:11px;color:var(--muted);margin-bottom:16px;}
+.chart-wrap{position:relative;height:250px;}
+.chart-wrap-sm{position:relative;height:200px;}
+.legend{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:12px;font-size:11px;color:var(--muted);}
+.legend span{display:flex;align-items:center;gap:5px;}
+.legend-dot{width:9px;height:9px;border-radius:3px;flex-shrink:0;}
+
+/* ── COMP TABLE ── */
+.comp-table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:18px;overflow:hidden;margin-bottom:48px;}
+.comp-table{width:100%;border-collapse:collapse;font-size:13px;}
+.comp-table th{padding:13px 18px;text-align:left;font-size:14px;letter-spacing:0.3px;text-transform:none;color:var(--text);font-weight:700;background:rgba(255,255,255,0.02);border-bottom:1px solid var(--border);}
+.comp-table td{padding:13px 18px;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:middle;text-align:center;}
+.comp-table tr:last-child td{border:none;}
+.comp-table tr:hover td{background:rgba(255,255,255,0.02);}
+.metric-name{font-weight:500;color:var(--text);text-align:center;}
+.metric-sub{font-size:11px;color:var(--muted);margin-top:2px;text-align:center;}
+.val-kurly{font-family:'DM Mono',monospace;font-weight:500;color:var(--kurly-light);}
+.val-coupang{font-family:'DM Mono',monospace;font-weight:500;color:var(--coupang-light);}
+.val-ssg{font-family:'DM Mono',monospace;font-weight:500;color:var(--ssg-light);}
+.win-badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:5px;margin-left:6px;vertical-align:middle;}
+.win-k{background:rgba(95,0,128,0.3);color:var(--kurly-light);}
+.win-c{background:rgba(232,35,42,0.2);color:var(--coupang-light);}
+.win-s{background:rgba(232,66,90,0.15);color:var(--ssg-light);}
+
+/* ── INSIGHT CARDS ── */
+.insight-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:48px;}
+.ins-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px;}
+.ins-title{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.ins-item{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
+.ins-item:last-child{border:none;}
+.ins-rank{font-family:'Bebas Neue',sans-serif;font-size:21px;width:26px;flex-shrink:0;line-height:1;}
+.ins-info{flex:1;min-width:0;}
+.ins-name{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ins-meta{font-size:11px;color:var(--muted);margin-top:2px;}
+.ins-val{font-family:'Bebas Neue',sans-serif;font-size:19px;flex-shrink:0;}
+
+/* ── CATEGORY DEEP DIVE ── */
+.cat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:48px;}
+.cat-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;border-top:3px solid;}
+.cat-name{font-size:12px;font-weight:700;margin-bottom:10px;text-align:center;}
+.cat-row{display:flex;justify-content:space-between;font-size:11px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+.cat-row:last-child{border:none;}
+.cat-label{color:var(--muted);}
+.cat-val{font-family:'DM Mono',monospace;font-weight:500;}
+.cat-badge{display:inline-block;font-size:10px;padding:2px 8px;border-radius:5px;font-weight:700;margin-top:8px;}
+
+/* ── SWOT ── */
+.swot-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:48px;}
+.swot-card{border-radius:16px;padding:22px;border:1px solid;}
+.swot-card.s-card{background:rgba(34,197,94,0.06);border-color:rgba(34,197,94,0.2);}
+.swot-card.w-card{background:rgba(239,68,68,0.06);border-color:rgba(239,68,68,0.2);}
+.swot-card.o-card{background:rgba(59,130,246,0.06);border-color:rgba(59,130,246,0.2);}
+.swot-card.t-card{background:rgba(245,200,66,0.06);border-color:rgba(245,200,66,0.2);}
+.swot-label{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;}
+.swot-card.s-card .swot-label{color:var(--green);}
+.swot-card.w-card .swot-label{color:#ef4444;}
+.swot-card.o-card .swot-label{color:var(--blue);}
+.swot-card.t-card .swot-label{color:var(--gold);}
+.swot-item{font-size:13px;padding:6px 0;display:flex;align-items:flex-start;gap:8px;border-bottom:1px solid rgba(255,255,255,0.04);line-height:1.5;}
+.swot-item:last-child{border:none;}
+.swot-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:7px;}
+.s-card .swot-dot{background:var(--green);}
+.w-card .swot-dot{background:#ef4444;}
+.o-card .swot-dot{background:var(--blue);}
+.t-card .swot-dot{background:var(--gold);}
+
+/* ── FOOTER ── */
+.footer{text-align:center;padding:26px 56px;border-top:1px solid var(--border);font-size:12px;color:var(--muted);position:relative;z-index:1;}
+.mb-48{margin-bottom:48px;}
+.mb-32{margin-bottom:32px;}
+</style>
+</head>
+<body>
+
+<!-- ══ 분석 범위 배너 ══ -->
+<div class=&quot;scope-banner&quot;>
+  <svg viewBox=&quot;0 0 24 24&quot;><path d=&quot;M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18&quot;/></svg>
+  분석 범위: 식품 카테고리 한정 (비식품·패션·가전·상품권 제외)
+  <div class=&quot;scope-cats&quot;>
+    <span class=&quot;scope-cat&quot;>정육/계란</span>
+    <span class=&quot;scope-cat&quot;>간편식/밀키트</span>
+    <span class=&quot;scope-cat&quot;>수산/해산물</span>
+    <span class=&quot;scope-cat&quot;>채소/과일</span>
+    <span class=&quot;scope-cat&quot;>베이커리/디저트</span>
+    <span class=&quot;scope-cat&quot;>기타식품(가공)</span>
+  </div>
+</div>
+
+<!-- ══ HEADER ══ -->
+<header class=&quot;header&quot;>
+  <div class=&quot;header-inner&quot;>
+    <div class=&quot;tag&quot;>Kurly vs Coupang vs SSG — Food Only</div>
+    <h1>Kurly 경쟁사(3사) Multichannel 분석 <span style=&quot;font-size:0.6em;letter-spacing:0.5px;opacity:0.8;font-weight:700;&quot;>(베스트 랭킹 식품 한정)</span></h1>
+    <div class=&quot;header-sub&quot;>
+      <span>식품 카테고리 3사 경쟁 분석 리포트</span>
+      <div class=&quot;brand-chips&quot;>
+        <span class=&quot;chip chip-k&quot;>Kurly 식품 834 SKUs</span>
+        <span class=&quot;chip chip-c&quot;>Coupang Food 294 SKUs</span>
+        <span class=&quot;chip chip-s&quot;>SSG 식품 약 30 SKUs</span>
+      </div>
+      <div class=&quot;date-badge&quot;>2026.05.12</div>
+    </div>
+  </div>
+</header>
+
+<div class=&quot;main&quot;>
+
+<!-- ══ SECTION ★: 경쟁사 분석 요약 ══ -->
+<div class=&quot;sec-title&quot;><div class=&quot;sec-num gold&quot;>★</div>Kurly 경쟁사(3사) Multichannel 분석 — 핵심 요약</div>
+
+<div class=&quot;strategy-block&quot;>
+  <div class=&quot;strategy-header&quot;>
+    <div class=&quot;strategy-icon&quot;>
+      <svg viewBox=&quot;0 0 24 24&quot;><path d=&quot;M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18&quot;/></svg>
+    </div>
+    <div>
+      <div class=&quot;strategy-title&quot;>3사 식품 경쟁 구도 한눈에 보기(Kurly vs Coupang vs SSG)</div>
+      <div class=&quot;strategy-desc&quot;>
+        식품 카테고리 한정(정육·밀키트·수산·채소·베이커리·가공식품) 베스트 랭킹 기준 분석 &nbsp;|&nbsp; 데이터 기준: 2026.05.07~12
+      </div>
+    </div>
+  </div>
+
+  <div class=&quot;strategy-cards&quot;>
+    <div class=&quot;str-card&quot; style=&quot;border-top-color:#bd76ff&quot;>
+      <div class=&quot;str-card-title&quot; style=&quot;color:#bd76ff&quot;>🟣 Kurly — 프리미엄 큐레이션</div>
+      <div class=&quot;str-card-body&quot;>
+        <strong>식품 834 SKU</strong>(3사 최다), 평균 단가 15,900원, 할인율 11.3%. <strong>베이커리/디저트 142개는 경쟁사 미진입 독점 구간</strong>(할인율 6.1% — 최고 마진). 숭의가든·사미헌·조선호텔 등 레스토랑 브랜드 독점 입점. 새벽배송 콜드체인이 신선도 핵심 경쟁력. 리뷰 최대 9,999+ 상한 표기로 실수치 불투명.
+      </div>
+    </div>
+    <div class=&quot;str-card&quot; style=&quot;border-top-color:#ff7075&quot;>
+      <div class=&quot;str-card-title&quot; style=&quot;color:#ff7075&quot;>🔴 Coupang — 대용량·초할인·리뷰 압도</div>
+      <div class=&quot;str-card-body&quot;>
+        <strong>식품 294 SKU</strong>, 평균 단가 21,018원(대용량 묶음 효과). <strong>할인율 31.8%</strong>(Kurly보다 20%p 높음). 삼다수 96만·신라면 81만 건 등 압도적 리뷰 생태계. 로켓프레시로 신선식품 영역 확장 중. 건강기능식품 대형 할인(종근당 -66%, 정관장 -64%) 고단가 카테고리 장악.
+      </div>
+    </div>
+    <div class=&quot;str-card&quot; style=&quot;border-top-color:#f79aaa&quot;>
+      <div class=&quot;str-card-title&quot; style=&quot;color:#f79aaa&quot;>🩷 SSG — 초저가 신선 생필품</div>
+      <div class=&quot;str-card-body&quot;>
+        <strong>식품 약 30 SKU</strong>(3사 최소), 평균 단가 약 5,800원으로 최저가. 흙대파 1,980원·노브랜드 두부 3,480원 등 초저가 신선 생필품 집중. 짜파게티 59만·서울우유 38만 건 국민 상품 중심 리뷰. 이마트 오프라인 픽업 연계로 신선도 확보. 노브랜드·5K프라이스 PB 상품이 핵심 경쟁력.
+      </div>
+    </div>
+  </div>
+
+  <div class=&quot;strategy-bottom&quot;>
+    <div class=&quot;str-kpi&quot;>
+      <div class=&quot;str-kpi-label&quot;>SKU 다양성 (Kurly)</div>
+      <div class=&quot;str-kpi-val&quot;>834개</div>
+      <div class=&quot;str-kpi-sub&quot;>Coupang(294) · SSG(30) 대비 압도적 카테고리 폭</div>
+    </div>
+    <div class=&quot;str-kpi&quot;>
+      <div class=&quot;str-kpi-label&quot;>할인율 격차</div>
+      <div class=&quot;str-kpi-val&quot;>-20%p</div>
+      <div class=&quot;str-kpi-sub&quot;>Kurly 11.3% vs Coupang 31.8% — 가격 체감 최대 약점</div>
+    </div>
+    <div class=&quot;str-kpi&quot;>
+      <div class=&quot;str-kpi-label&quot;>독점 카테고리</div>
+      <div class=&quot;str-kpi-val&quot;>베이커리</div>
+      <div class=&quot;str-kpi-sub&quot;>142 SKU, 할인율 6.1% — 경쟁사 부재 고마진 구간</div>
+    </div>
+    <div class=&quot;str-kpi&quot;>
+      <div class=&quot;str-kpi-label&quot;>리뷰 최대 격차</div>
+      <div class=&quot;str-kpi-val&quot;>969K</div>
+      <div class=&quot;str-kpi-sub&quot;>Coupang 삼다수 96만 vs Kurly 9,999+ 상한 표기</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 1: KPI 비교 ══ -->
+<div class=&quot;sec-title&quot;><div class=&quot;sec-num&quot;>1</div>3사 식품 카테고리 핵심 지표 통합 비교</div>
+
+<div class=&quot;comp-table-wrap mb-48&quot;>
+  <table class=&quot;comp-table&quot;>
+    <thead>
+      <tr>
+        <th style=&quot;width:18%;text-align:center;&quot;>비교 항목</th>
+        <th style=&quot;width:28%;text-align:center;&quot;>Kurly<br><span style=&quot;font-weight:400;font-size:11px;color:#a0a0c0;display:block;text-align:center;margin-top:4px;&quot;>(식품 834 SKU)</span></th>
+        <th style=&quot;width:28%;text-align:center;&quot;>Coupang<br><span style=&quot;font-weight:400;font-size:11px;color:#a0a0c0;display:block;text-align:center;margin-top:4px;&quot;>(식품 294 SKU)</span></th>
+        <th style=&quot;width:26%;text-align:center;&quot;>SSG.com<br><span style=&quot;font-weight:400;font-size:11px;color:#a0a0c0;display:block;text-align:center;margin-top:4px;&quot;>(식품 ~30 SKU)</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class=&quot;metric-name&quot;>식품 포지셔닝</div><div class=&quot;metric-sub&quot;>핵심 전략 방향</div></td>
+        <td><span class=&quot;val-kurly&quot;>프리미엄 식품 큐레이션</span><br><small style=&quot;color:var(--muted)&quot;>레스토랑급 브랜드 독점 입점, 새벽 콜드체인</small></td>
+        <td><span class=&quot;val-coupang&quot;>대용량 묶음 + 초저가</span><br><small style=&quot;color:var(--muted)&quot;>로켓배송 속도, 대용량 번들로 단가 우위</small></td>
+        <td><span class=&quot;val-ssg&quot;>신선 생필품 초저가</span><br><small style=&quot;color:var(--muted)&quot;>노브랜드 PB 초저가 + 이마트 오프라인 연계</small></td>
+      </tr>
+      <tr>
+        <td><div class=&quot;metric-name&quot;>식품 SKU 구성</div></td>
+        <td>
+          <span class=&quot;val-kurly&quot;>834개</span><span class=&quot;win-badge win-k&quot;>다양성 1위</span><br>
+          <small style=&quot;color:var(--muted)&quot;>정육 281 · 밀키트 161 · 베이커리 142 · 수산 126 · 채소 124</small>
+        </td>
+        <td>
+          <span class=&quot;val-coupang&quot;>294개</span><br>
+          <small style=&quot;color:var(--muted)&quot;>1~2만원대 집중, 가공식품·음료·양념 주력</small>
+        </td>
+        <td>
+          <span class=&quot;val-ssg&quot;>약 30개</span><br>
+          <small style=&quot;color:var(--muted)&quot;>신선채소·유제품·라면 등 생필품 집중</small>
+        </td>
+      </tr>
+      <tr>
+        <td><div class=&quot;metric-name&quot;>식품 평균 단가</div></td>
+        <td><span class=&quot;val-kurly&quot;>약 15,900원</span><br><small style=&quot;color:var(--muted)&quot;>채소 7,977원~정육 17,710원 범위</small></td>
+        <td><span class=&quot;val-coupang&quot;>21,018원</span><span class=&quot;win-badge win-c&quot;>수치상 고가</span><br><small style=&quot;color:var(--muted)&quot;>대용량 묶음 영향 — 단위당 실질가는 낮음</small></td>
+        <td><span class=&quot;val-ssg&quot;>약 5,800원</span><br><small style=&quot;color:var(--muted)&quot;>980원~11,980원 초저가 신선식품 위주</small></td>
+      </tr>
+      <tr>
+        <td><div class=&quot;metric-name&quot;>식품 평균 할인율</div></td>
+        <td><span class=&quot;val-kurly&quot;>약 11.3%</span><br><small style=&quot;color:var(--muted)&quot;>베이커리 6.1%(최저) → 정육 11.4% → 수산 11.0%</small></td>
+        <td><span class=&quot;val-coupang&quot;>31.8%</span><span class=&quot;win-badge win-c&quot;>할인 1위</span><br><small style=&quot;color:var(--muted)&quot;>즉시할인 25%, 쿠폰 48개 병행 — 복합 할인 구조</small></td>
+        <td><span class=&quot;val-ssg&quot;>약 10~22%</span><br><small style=&quot;color:var(--muted)&quot;>수박·양상추 30%, 방울토마토 22% 선별 할인</small></td>
+      </tr>
+      <tr>
+        <td><div class=&quot;metric-name&quot;>리뷰 생태계</div></td>
+        <td><span class=&quot;val-kurly&quot;>최고 9,999+건</span><br><small style=&quot;color:var(--muted)&quot;>숭의가든 소불고기 등 다수 — 상한 표기로 실수치 불투명</small></td>
+        <td><span class=&quot;val-coupang&quot;>최대 969K/상품</span><span class=&quot;win-badge win-c&quot;>리뷰 1위</span><br><small style=&quot;color:var(--muted)&quot;>삼다수 96만, 신라면 81만 — 상품당 평균 10만 건</small></td>
+        <td><span class=&quot;val-ssg&quot;>최대 597K/상품</span><br><small style=&quot;color:var(--muted)&quot;>짜파게티 59만, 서울우유 38만 — 국민 상품 리뷰 집중</small></td>
+      </tr>
+      <tr>
+        <td><div class=&quot;metric-name&quot;>베스트 식품 유형</div></td>
+        <td><span class=&quot;val-kurly&quot;>레스토랑 브랜드 정육·간편식</span><br><small style=&quot;color:var(--muted)&quot;>숭의가든·사미헌·조선호텔·압구정주꾸미 등</small></td>
+        <td><span class=&quot;val-coupang&quot;>대용량 생수·라면·양념</span><br><small style=&quot;color:var(--muted)&quot;>삼다수·신라면·고추장·올리브유 대량 구매 수요</small></td>
+        <td><span class=&quot;val-ssg&quot;>초저가 신선 생필품</span><br><small style=&quot;color:var(--muted)&quot;>흙대파·백오이·노브랜드 두부·서울우유</small></td>
+      </tr>
+      <tr>
+        <td><div class=&quot;metric-name&quot;>독점 카테고리</div></td>
+        <td><span class=&quot;val-kurly&quot;>베이커리/디저트 142개</span><span class=&quot;win-badge win-k&quot;>독보적</span><br><small style=&quot;color:var(--muted)&quot;>경쟁사 미진입 — 고마진(할인율 6.1%) + SNS 바이럴 최적</small></td>
+        <td><span class=&quot;val-coupang&quot;>건강기능식품 대형 할인</span><br><small style=&quot;color:var(--muted)&quot;>종근당 유산균 -66%, 정관장 -64% 등 고단가 할인</small></td>
+        <td><span class=&quot;val-ssg&quot;>PB 초저가 두부·콩나물</span><br><small style=&quot;color:var(--muted)&quot;>노브랜드·5K프라이스 — 이마트 오프라인 연계 강점</small></td>
+      </tr>
+      <tr>
+        <td><div class=&quot;metric-name&quot;>배송 차별점</div></td>
+        <td><span class=&quot;val-kurly&quot;>새벽배송 (샛별·아침)</span><br><small style=&quot;color:var(--muted)&quot;>신선도 최우선 콜드체인 — 식품 핵심 경쟁력</small></td>
+        <td><span class=&quot;val-coupang&quot;>내일도착 보장 89.8%</span><span class=&quot;win-badge win-c&quot;>속도 1위</span><br><small style=&quot;color:var(--muted)&quot;>로켓프레시로 신선식품 영역 잠식 중</small></td>
+        <td><span class=&quot;val-ssg&quot;>당일·이마트 픽업 연계</span><br><small style=&quot;color:var(--muted)&quot;>오프라인 이마트 픽업으로 신선도 우위 일부 확보</small></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+<!-- ══ SECTION 2: 데이터 시각화 ══ -->
+<div class=&quot;sec-title&quot;><div class=&quot;sec-num&quot;>2</div>식품 데이터 시각화 비교</div>
+
+<div class=&quot;charts-row mb-32&quot;>
+  <div class=&quot;chart-card&quot;>
+    <h3>3사 식품 평균 할인율 비교</h3>
+    <p>Coupang 식품 가격 경쟁력 vs Kurly 정가 전략 — 격차 20%</p>
+    <div class=&quot;chart-wrap&quot;>
+      <canvas id=&quot;discountCompChart&quot; role=&quot;img&quot; aria-label=&quot;3사 식품 평균 할인율 비교&quot;>식품 할인율 비교</canvas>
+    </div>
+  </div>
+  <div class=&quot;chart-card&quot;>
+    <h3>3사 식품 평균 판매가 비교</h3>
+    <p>Coupang 대용량 묶음 단가 vs Kurly 단품 프리미엄 — 실질 구매가 역전 현상</p>
+    <div class=&quot;chart-wrap&quot;>
+      <canvas id=&quot;priceCompChart&quot; role=&quot;img&quot; aria-label=&quot;3사 식품 평균 판매가&quot;>식품 가격 비교</canvas>
+    </div>
+  </div>
+</div>
+
+<div class=&quot;charts-row-3 mb-32&quot;>
+  <div class=&quot;chart-card&quot;>
+    <h3>Kurly 식품 카테고리 구성</h3>
+    <p>정육/계란 34% 주도 — 5개 핵심 식품군 균형 분포</p>
+    <div style=&quot;position:relative;height:220px;&quot;>
+      <canvas id=&quot;kurlyFoodCategChart&quot; role=&quot;img&quot; aria-label=&quot;Kurly 식품 카테고리 구성&quot;>Kurly 식품 카테고리</canvas>
+    </div>
+  </div>
+  <div class=&quot;chart-card&quot;>
+    <h3>Kurly 식품 카테고리별 평균 할인율</h3>
+    <p>베이커리 6.1%(저할인·고마진) vs 채소 9.4%</p>
+    <div class=&quot;chart-wrap-sm&quot;>
+      <canvas id=&quot;kurlyDiscCategChart&quot; role=&quot;img&quot; aria-label=&quot;Kurly 식품 카테고리별 평균 할인율&quot;>Kurly 카테고리별 할인율</canvas>
+    </div>
+  </div>
+  <div class=&quot;chart-card&quot;>
+    <h3>Kurly 식품 가격대 분포</h3>
+    <p>5천~2만원 구간이 73% 집중 — 실용 소비 중심</p>
+    <div class=&quot;chart-wrap-sm&quot;>
+      <canvas id=&quot;kurlyFoodPriceChart&quot; role=&quot;img&quot; aria-label=&quot;Kurly 식품 가격대 분포&quot;>Kurly 식품 가격대</canvas>
+    </div>
+  </div>
+</div>
+
+<div class=&quot;chart-card wide mb-48&quot;>
+  <h3>식품 카테고리별 양사 평균 단가 비교 (Kurly vs Coupang)</h3>
+  <p>Kurly 개별 식품 카테고리 단가 — Coupang 전체 평균(21,018원) 기준선 대비 포지셔닝 분석</p>
+  <div style=&quot;position:relative;height:240px;&quot;>
+    <canvas id=&quot;categoryPriceCompChart&quot; role=&quot;img&quot; aria-label=&quot;Kurly 식품 카테고리별 단가 vs Coupang 평균 기준선&quot;>카테고리 단가 비교</canvas>
+  </div>
+  <div style=&quot;text-align:center;margin-top:10px;&quot;>
+    <span style=&quot;font-size:11px;color:var(--muted);display:inline-flex;align-items:center;gap:6px;&quot;>
+      <span style=&quot;width:9px;height:9px;border-radius:3px;background:#bd76ff;display:inline-block;flex-shrink:0;&quot;></span>Kurly 카테고리별 평균가
+    </span>
+  </div>
+</div>
+
+<!-- ══ SECTION 3: 식품 카테고리 딥다이브 ══ -->
+<div class=&quot;sec-title&quot;><div class=&quot;sec-num&quot;>3</div>Kurly 식품 카테고리별 딥다이브</div>
+
+<div class=&quot;cat-grid mb-48&quot;>
+  <div class=&quot;cat-card&quot; style=&quot;border-top-color:#bd76ff&quot;>
+    <div class=&quot;cat-name&quot; style=&quot;color:#bd76ff&quot;>정육 / 계란</div>
+    <div class=&quot;cat-row&quot;><span class=&quot;cat-label&quot;>SKU 수</span><span class=&quot;cat-val&quot; style=&quot;color:#bd76ff&quot;>281개</span></div>
+    <div class=&quot;cat-row&quot;><span class=&quot;cat-label&quot;>평균가</span><span class=&quot;cat-val&quot;>17,710원</span></div>
+    <div class=&quot;cat-row&quot;><span class=&quot;cat-label&quot;>평균 할인율</span><span class=&quot;cat-val&quot;>11.4%</span></div>
+    <div class=&quot;cat-row&quot;><span class=&quot;cat-label&quot;>전체 식품 비중</span><span class=&quot;cat-val&quot;>33.7%</span></div>
+    <span class=&quot;cat-badge&quot; style=&quot;background:rgba(189,118,255,0.15);color:#bd76ff&quot;>핵심 트래픽 카테고리</span>
+  </div>
+  <div class=&quot;cat-card&quot; style=&quot;border-top-color:#3b82f6&quot;>
+    <div class=&quot;cat-name&quot; style=&quot;color:#3b82f6&quot;>간편식 / 밀키트</div>
+    <div class=&quot;cat-row&quot;><span class=&quot;cat-label&quot;>SKU 수</span><span class=&quot;cat-val&quot; style=&quot;color:#3b82f6&quot;>161개</span></div>
+    <div class=&quot;cat-row&quot;><span class=&quot;cat-label&quot;>평균가</span><span class=&quot;cat-val&quot;>19,159원</span></div>
+    <div class=&quot;cat-row&quot;><span class=&quot;cat-label&quot;>평균 할인율</span><span class=&quot;cat-val&quot;>11.7%</span></div>
+    <div class=&quot;cat-row&quot;><span class=&quot;cat-label&quot;>전체 식품 비중</span><span class=&quot;cat-val&quot;>19.3%</span></div>
+    <span class=&quot;cat-badge&quot; style=&quot;background:rgba(59,130,246,0.15);color:#3b82f6&quot;>성장 전략 카테고리</span>
+  </div>
+  <div class=&quot;cat-card&quot; style=&quot;border-top-color:#f5c842&quot;>
+    <div class=&quot;cat-name&quot; style=&quot;color:#f5c842&quot;>베이커리 / 디저트</div>
+    <div class=&quot;cat-row&quot;><span class=&quot;cat-label&quot;>SKU 수</span><span class=&quot;cat-val&quot; style=&quot;color:#f5c842&quot;>142개</span></div>
+    <div class=&quot;cat-row&quot;><span class=&quot;cat-label&quot;>평균가</span><span class=&quot;cat-val&quot;>15,150원</span></div>
+    <div class=&quot;cat-row&quot;><span class=&quot;cat-label&quot;>평균 할인율</span><span class=&quot;cat-val&quot; style=&quot;color:#22c55e&quot;>6.1% ★최저</span></div>
+    <div class=&quot;cat-row&quot;><span class=&quot;cat-label&quot;>전체 식품 비중</span><span class=&quot;cat-val&quot;>17.0%</span></div>
+    <span class=&quot;cat-badge&quot; style=&quot;background:rgba(245,200,66,0.15);color:#f5c842&quot;>독점 고마진 카테고리</span>
+  </div>
+  <div class=&quot;cat-card&quot; style=&quot;border-top-color:#22c55e&quot;>
+    <div class=&quot;cat-name&quot; style=&quot;color:#22c55e&quot;>수산 / 해산물</div>
+    <div class=&quot;cat-row&quot;><span class=&quot;cat-label&quot;>SKU 수</span><span class=&quot;cat-val&quot; style=&quot;color:#22c55e&quot;>126개</span></div>
+    <div class=&quot;cat-row&quot;><span class=&quot;cat-label&quot;>평균가</span><span class=&quot;cat-val&quot;>16,466원</span></div>
+    <div class=&quot;cat-row&quot;><span class=&quot;cat-label&quot;>평균 할인율</span><span class=&quot;cat-val&quot;>11.0%</span></div>
+    <div class=&quot;cat-row&quot;><span class=&quot;cat-label&quot;>전체 식품 비중</span><span class=&quot;cat-val&quot;>15.1%</span></div>
+    <span class=&quot;cat-badge&quot; style=&quot;background:rgba(34,197,94,0.15);color:#22c55e&quot;>신선도 차별화 가능</span>
+  </div>
+  <div class=&quot;cat-card&quot; style=&quot;border-top-color:#ff7075&quot;>
+    <div class=&quot;cat-name&quot; style=&quot;color:#ff7075&quot;>채소 / 과일</div>
+    <div class=&quot;cat-row&quot;><span class=&quot;cat-label&quot;>SKU 수</span><span class=&quot;cat-val&quot; style=&quot;color:#ff7075&quot;>124개</span></div>
+    <div class=&quot;cat-row&quot;><span class=&quot;cat-label&quot;>평균가</span><span class=&quot;cat-val&quot; style=&quot;color:#22c55e&quot;>7,977원 ★최저가</span></div>
+    <div class=&quot;cat-row&quot;><span class=&quot;cat-label&quot;>평균 할인율</span><span class=&quot;cat-val&quot;>9.4%</span></div>
+    <div class=&quot;cat-row&quot;><span class=&quot;cat-label&quot;>전체 식품 비중</span><span class=&quot;cat-val&quot;>14.9%</span></div>
+    <span class=&quot;cat-badge&quot; style=&quot;background:rgba(255,112,117,0.15);color:#ff7075&quot;>정기구독 연계 최적</span>
+  </div>
+</div>
+
+<!-- ══ SECTION 5: 식품 베스트 인사이트 ══ -->
+<div class=&quot;sec-title&quot;><div class=&quot;sec-num&quot;>4</div>식품 베스트 상품 인사이트</div>
+
+<div class=&quot;insight-grid mb-48&quot;>
+  <div class=&quot;ins-card&quot;>
+    <div class=&quot;ins-title&quot; style=&quot;color:var(--kurly-light)&quot;>Kurly 식품 TOP 리뷰</div>
+    <div class=&quot;ins-item&quot;>
+      <div class=&quot;ins-rank&quot; style=&quot;color:var(--kurly-light)&quot;>1</div>
+      <div class=&quot;ins-info&quot;><div class=&quot;ins-name&quot;>[숭의가든] 옛날 소 불고기</div><div class=&quot;ins-meta&quot;>정육/계란 · 15,990원 (-15%)</div></div>
+      <div class=&quot;ins-val&quot; style=&quot;color:var(--kurly-light)&quot;>9,999+</div>
+    </div>
+    <div class=&quot;ins-item&quot;>
+      <div class=&quot;ins-rank&quot; style=&quot;color:var(--kurly-light)&quot;>2</div>
+      <div class=&quot;ins-info&quot;><div class=&quot;ins-name&quot;>[비비고] 순살 생선구이 5종</div><div class=&quot;ins-meta&quot;>수산/해산물 · 5,480원 (-18%)</div></div>
+      <div class=&quot;ins-val&quot; style=&quot;color:var(--kurly-light)&quot;>9,999+</div>
+    </div>
+    <div class=&quot;ins-item&quot;>
+      <div class=&quot;ins-rank&quot; style=&quot;color:var(--kurly-light)&quot;>3</div>
+      <div class=&quot;ins-info&quot;><div class=&quot;ins-name&quot;>[사미헌] 갈비탕</div><div class=&quot;ins-meta&quot;>정육/계란 · 14,500원 (-5%)</div></div>
+      <div class=&quot;ins-val&quot; style=&quot;color:var(--kurly-light)&quot;>9,999+</div>
+    </div>
+    <div class=&quot;ins-item&quot;>
+      <div class=&quot;ins-rank&quot; style=&quot;color:var(--kurly-light)&quot;>4</div>
+      <div class=&quot;ins-info&quot;><div class=&quot;ins-name&quot;>[조선호텔] 떡갈비 345g</div><div class=&quot;ins-meta&quot;>정육/계란 · 9,900원 (-10%)</div></div>
+      <div class=&quot;ins-val&quot; style=&quot;color:var(--kurly-light)&quot;>9,999+</div>
+    </div>
+    <div class=&quot;ins-item&quot;>
+      <div class=&quot;ins-rank&quot; style=&quot;color:var(--kurly-light)&quot;>5</div>
+      <div class=&quot;ins-info&quot;><div class=&quot;ins-name&quot;>[압구정주꾸미] 주꾸미 볶음 2종</div><div class=&quot;ins-meta&quot;>수산/해산물 · 9,900원 (-15%)</div></div>
+      <div class=&quot;ins-val&quot; style=&quot;color:var(--kurly-light)&quot;>9,999+</div>
+    </div>
+  </div>
+
+  <div class=&quot;ins-card&quot;>
+    <div class=&quot;ins-title&quot; style=&quot;color:var(--coupang-light)&quot;>Coupang 식품 TOP 리뷰</div>
+    <div class=&quot;ins-item&quot;>
+      <div class=&quot;ins-rank&quot; style=&quot;color:var(--coupang-light)&quot;>1</div>
+      <div class=&quot;ins-info&quot;><div class=&quot;ins-name&quot;>제주삼다수 그린 무라벨 2L×30개</div><div class=&quot;ins-meta&quot;>음료/생수 · 30,860원 (-4%)</div></div>
+      <div class=&quot;ins-val&quot; style=&quot;color:var(--coupang-light)&quot;>969K</div>
+    </div>
+    <div class=&quot;ins-item&quot;>
+      <div class=&quot;ins-rank&quot; style=&quot;color:var(--coupang-light)&quot;>2</div>
+      <div class=&quot;ins-info&quot;><div class=&quot;ins-name&quot;>신라면 120g × 20개</div><div class=&quot;ins-meta&quot;>라면 · 14,940원 (-6%)</div></div>
+      <div class=&quot;ins-val&quot; style=&quot;color:var(--coupang-light)&quot;>813K</div>
+    </div>
+    <div class=&quot;ins-item&quot;>
+      <div class=&quot;ins-rank&quot; style=&quot;color:var(--coupang-light)&quot;>3</div>
+      <div class=&quot;ins-info&quot;><div class=&quot;ins-name&quot;>스파클 생수 무라벨 500ml×60개</div><div class=&quot;ins-meta&quot;>음료/생수 · 11,840원 (-16%)</div></div>
+      <div class=&quot;ins-val&quot; style=&quot;color:var(--coupang-light)&quot;>594K</div>
+    </div>
+    <div class=&quot;ins-item&quot;>
+      <div class=&quot;ins-rank&quot; style=&quot;color:var(--coupang-light)&quot;>4</div>
+      <div class=&quot;ins-info&quot;><div class=&quot;ins-name&quot;>해찬들 태양초 우리쌀 고추장 3kg</div><div class=&quot;ins-meta&quot;>양념/소스 · 13,500원 (-75%)</div></div>
+      <div class=&quot;ins-val&quot; style=&quot;color:var(--coupang-light)&quot;>52K</div>
+    </div>
+    <div class=&quot;ins-item&quot;>
+      <div class=&quot;ins-rank&quot; style=&quot;color:var(--coupang-light)&quot;>5</div>
+      <div class=&quot;ins-info&quot;><div class=&quot;ins-name&quot;>해표 압착 올리브유 500ml×2개</div><div class=&quot;ins-meta&quot;>식용유 · 11,820원 (-64%)</div></div>
+      <div class=&quot;ins-val&quot; style=&quot;color:var(--coupang-light)&quot;>71K</div>
+    </div>
+  </div>
+
+  <div class=&quot;ins-card&quot;>
+    <div class=&quot;ins-title&quot; style=&quot;color:var(--ssg-light)&quot;>SSG 식품 TOP 리뷰</div>
+    <div class=&quot;ins-item&quot;>
+      <div class=&quot;ins-rank&quot; style=&quot;color:var(--ssg-light)&quot;>1</div>
+      <div class=&quot;ins-info&quot;><div class=&quot;ins-name&quot;>농심 짜파게티 (140g×5입)</div><div class=&quot;ins-meta&quot;>라면 · 4,980원 (할인없음)</div></div>
+      <div class=&quot;ins-val&quot; style=&quot;color:var(--ssg-light)&quot;>598K</div>
+    </div>
+    <div class=&quot;ins-item&quot;>
+      <div class=&quot;ins-rank&quot; style=&quot;color:var(--ssg-light)&quot;>2</div>
+      <div class=&quot;ins-info&quot;><div class=&quot;ins-name&quot;>서울우유 후레쉬밀크 기획 900ml×2</div><div class=&quot;ins-meta&quot;>유제품 · 3,880원 (할인없음)</div></div>
+      <div class=&quot;ins-val&quot; style=&quot;color:var(--ssg-light)&quot;>385K</div>
+    </div>
+    <div class=&quot;ins-item&quot;>
+      <div class=&quot;ins-rank&quot; style=&quot;color:var(--ssg-light)&quot;>3</div>
+      <div class=&quot;ins-info&quot;><div class=&quot;ins-name&quot;>파머스픽 흙대파 (봉)</div><div class=&quot;ins-meta&quot;>채소 · 1,980원 (할인없음)</div></div>
+      <div class=&quot;ins-val&quot; style=&quot;color:var(--ssg-light)&quot;>339K</div>
+    </div>
+    <div class=&quot;ins-item&quot;>
+      <div class=&quot;ins-rank&quot; style=&quot;color:var(--ssg-light)&quot;>4</div>
+      <div class=&quot;ins-info&quot;><div class=&quot;ins-name&quot;>노브랜드 국산콩두부 300g×2입</div><div class=&quot;ins-meta&quot;>두부 · 3,480원 (할인없음)</div></div>
+      <div class=&quot;ins-val&quot; style=&quot;color:var(--ssg-light)&quot;>376K</div>
+    </div>
+    <div class=&quot;ins-item&quot;>
+      <div class=&quot;ins-rank&quot; style=&quot;color:var(--ssg-light)&quot;>5</div>
+      <div class=&quot;ins-info&quot;><div class=&quot;ins-name&quot;>신라면 5입 600g</div><div class=&quot;ins-meta&quot;>라면 · 4,150원 (할인없음)</div></div>
+      <div class=&quot;ins-val&quot; style=&quot;color:var(--ssg-light)&quot;>533K</div>
+    </div>
+  </div>
+
+  <div class=&quot;ins-card&quot;>
+    <div class=&quot;ins-title&quot; style=&quot;color:#ef4444&quot;>Kurly 식품 고할인 TOP (식품 한정)</div>
+    <div class=&quot;ins-item&quot;>
+      <div class=&quot;ins-rank&quot; style=&quot;color:#ef4444&quot;>1</div>
+      <div class=&quot;ins-info&quot;><div class=&quot;ins-name&quot;>[KF365] 훈제오리 300g</div><div class=&quot;ins-meta&quot;>정육/계란 · 10,500원</div></div>
+      <div class=&quot;ins-val&quot; style=&quot;color:#ef4444&quot;>-35%</div>
+    </div>
+    <div class=&quot;ins-item&quot;>
+      <div class=&quot;ins-rank&quot; style=&quot;color:#ef4444&quot;>2</div>
+      <div class=&quot;ins-info&quot;><div class=&quot;ins-name&quot;>[Kim's butcher] 대패삼겹살 1kg</div><div class=&quot;ins-meta&quot;>정육/계란 · 16,990원</div></div>
+      <div class=&quot;ins-val&quot; style=&quot;color:#ef4444&quot;>-30%</div>
+    </div>
+    <div class=&quot;ins-item&quot;>
+      <div class=&quot;ins-rank&quot; style=&quot;color:#ef4444&quot;>3</div>
+      <div class=&quot;ins-info&quot;><div class=&quot;ins-name&quot;>[KF365] 춘천식 닭갈비 1.2kg</div><div class=&quot;ins-meta&quot;>정육/계란 · 19,900원</div></div>
+      <div class=&quot;ins-val&quot; style=&quot;color:#ef4444&quot;>-36%</div>
+    </div>
+    <div class=&quot;ins-item&quot;>
+      <div class=&quot;ins-rank&quot; style=&quot;color:#ef4444&quot;>4</div>
+      <div class=&quot;ins-info&quot;><div class=&quot;ins-name&quot;>[Sea to Table] 손질 생새우살 200g</div><div class=&quot;ins-meta&quot;>수산/해산물 · 8,400원</div></div>
+      <div class=&quot;ins-val&quot; style=&quot;color:#ef4444&quot;>-25%</div>
+    </div>
+    <div class=&quot;ins-item&quot;>
+      <div class=&quot;ins-rank&quot; style=&quot;color:#ef4444&quot;>5</div>
+      <div class=&quot;ins-info&quot;><div class=&quot;ins-name&quot;>[차려낸] 햄 가득 송탄식 부대찌개</div><div class=&quot;ins-meta&quot;>정육/계란 · 15,900원</div></div>
+      <div class=&quot;ins-val&quot; style=&quot;color:#ef4444&quot;>-31%</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 6: 식품 SWOT ══ -->
+<div class=&quot;sec-title&quot;><div class=&quot;sec-num&quot;>5</div>Kurly 식품 SWOT 분석 (vs 경쟁사)</div>
+
+<div class=&quot;swot-grid mb-48&quot;>
+  <div class=&quot;swot-card s-card&quot;>
+    <div class=&quot;swot-label&quot;>강점 (Strengths)</div>
+    <div class=&quot;swot-item&quot;><span class=&quot;swot-dot&quot;></span>식품 834 SKU — 경쟁사 대비 압도적 카테고리 폭 (Coupang 294, SSG 30)</div>
+    <div class=&quot;swot-item&quot;><span class=&quot;swot-dot&quot;></span>베이커리/디저트 142개 독점 구간 — 할인율 6.1%로 식품 중 최고 마진</div>
+    <div class=&quot;swot-item&quot;><span class=&quot;swot-dot&quot;></span>새벽배송 콜드체인 — 신선도 최상위 (정육·수산·채소 품질 경쟁력)</div>
+    <div class=&quot;swot-item&quot;><span class=&quot;swot-dot&quot;></span>레스토랑 브랜드 독점 입점 — 숭의가든·사미헌·조선호텔 등 차별화 MD</div>
+    <div class=&quot;swot-item&quot;><span class=&quot;swot-dot&quot;></span>Kurly's 식품 자체 브랜드 (국산콩두부·순살바베큐치킨 등) 마진·충성도 동시 확보</div>
+  </div>
+  <div class=&quot;swot-card w-card&quot;>
+    <div class=&quot;swot-label&quot;>약점 (Weaknesses)</div>
+    <div class=&quot;swot-item&quot;><span class=&quot;swot-dot&quot;></span>식품 평균 할인율 11.3% — Coupang(31.8%) 대비 20%p 격차로 가격 체감 불리</div>
+    <div class=&quot;swot-item&quot;><span class=&quot;swot-dot&quot;></span>리뷰 9,999+ 상한 표기 — 실수치 불투명으로 소비자 신뢰 자산 약화</div>
+    <div class=&quot;swot-item&quot;><span class=&quot;swot-dot&quot;></span>생수·라면 등 대용량 묶음 상품 부재 — 반복 구매 생필품 경쟁력 미흡</div>
+    <div class=&quot;swot-item&quot;><span class=&quot;swot-dot&quot;></span>초저가 채소·유제품 라인업 — SSG 노브랜드 대비 가격 저항 존재</div>
+    <div class=&quot;swot-item&quot;><span class=&quot;swot-dot&quot;></span>로켓프레시·당일배송 없음 — 급히 필요한 식재료 구매 시 경쟁 열위</div>
+  </div>
+  <div class=&quot;swot-card o-card&quot;>
+    <div class=&quot;swot-label&quot;>기회 (Opportunities)</div>
+    <div class=&quot;swot-item&quot;><span class=&quot;swot-dot&quot;></span>밀키트 161개 기반 정기구독 서비스 확장 — 주간 식사 솔루션 구독 모델</div>
+    <div class=&quot;swot-item&quot;><span class=&quot;swot-dot&quot;></span>베이커리 142개 SNS 콘텐츠 커머스화 — 팝업 베이커리·한정 콜라보 시리즈</div>
+    <div class=&quot;swot-item&quot;><span class=&quot;swot-dot&quot;></span>채소/과일 124개 위클리 박스 정기구독 — 반복 구매 락인 + 신선도 차별화</div>
+    <div class=&quot;swot-item&quot;><span class=&quot;swot-dot&quot;></span>정육×밀키트 식사 세트 번들 기획 — 객단가 상승 + 리뷰 수 집중 효과</div>
+    <div class=&quot;swot-item&quot;><span class=&quot;swot-dot&quot;></span>건강기능식품 식품 영역 확장 — Coupang 대형 할인 대응 프리미엄 건강식 강화</div>
+  </div>
+  <div class=&quot;swot-card t-card&quot;>
+    <div class=&quot;swot-label&quot;>위협 (Threats)</div>
+    <div class=&quot;swot-item&quot;><span class=&quot;swot-dot&quot;></span>Coupang 로켓프레시 확장 — 새벽배송 영역 직접 잠식, 신선식품 배송 경쟁 심화</div>
+    <div class=&quot;swot-item&quot;><span class=&quot;swot-dot&quot;></span>SSG 노브랜드 초저가 신선식품 — 가성비 소비 트렌드 확대 시 Kurly 이탈 유발</div>
+    <div class=&quot;swot-item&quot;><span class=&quot;swot-dot&quot;></span>Coupang 식품 리뷰 생태계 압도적 격차 — 소비자 식품 구매 의사결정 플랫폼 점유</div>
+    <div class=&quot;swot-item&quot;><span class=&quot;swot-dot&quot;></span>경기 침체 시 식품 프리미엄 가격 저항 증가 — Coupang·SSG 초저가 이동 가속</div>
+    <div class=&quot;swot-item&quot;><span class=&quot;swot-dot&quot;></span>네이버 쇼핑라이브·카카오 식품 버티컬 진입 — 플랫폼 식품 커머스 경쟁 격화</div>
+  </div>
+</div>
+
+</div>
+
+<!-- ══ 분석 범위 안내 (대시보드 하단) ══ -->
+<div class=&quot;food-note&quot; style=&quot;margin:0 56px 0;max-width:1360px;margin-left:auto;margin-right:auto;margin-bottom:0;border-radius:0;border-left:none;border-right:none;border-bottom:none;border-top:1px solid rgba(245,200,66,0.2);&quot;>
+  <div class=&quot;food-note-icon&quot;>🍽️</div>
+  <div>
+    <strong>식품 카테고리 한정 분석 기준</strong><br>
+    <strong>Kurly:</strong> 전체 1,357 SKU 중 비식품(생활/가전 26개) 및 비식품성 기타 상품 제외 → <strong>식품 834개</strong> (간편식/밀키트 161 · 정육/계란 281 · 베이커리/디저트 142 · 수산/해산물 126 · 채소/과일 124) 기준 재산정 &amp;nbsp;|&amp;nbsp;
+    <strong>Coupang:</strong> Food 카테고리 294개 전체 유지 (이미 식품 한정) &amp;nbsp;|&amp;nbsp;
+    <strong>SSG:</strong> 40개 베스트 중 상품권·전자제품·패션 제외 → 신선식품·라면·유제품 등 <strong>식품 약 30개</strong> 기준.
+  </div>
+</div>
+
+<footer class=&quot;footer&quot;>
+  Kurly × Coupang × SSG.com 식품 카테고리 한정 3사 경쟁 분석 보고서 &amp;nbsp;|&amp;nbsp; 분석 범위: 식품(정육·밀키트·수산·채소·베이커리·가공식품) &amp;nbsp;|&amp;nbsp; 데이터 기준: 2026.05.07~12
+</footer>
+
+<script>
+window.addEventListener('load', function(){
+/* ── 바 위에 레이블 그리는 커스텀 플러그인 ── */
+const topLabelPlugin = {
+  id:'topLabel',
+  afterDatasetsDraw(chart, args, opts){
+    const {ctx, data, chartArea, scales} = chart;
+    const ds = chart.getDatasetMeta(0);
+    ctx.save();
+    ctx.font = `700 ${opts.fontSize||13}px 'Noto Sans KR', sans-serif`;
+    ctx.fillStyle = opts.color || '#f0f0f8';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'bottom';
+    ds.data.forEach((bar, i) => {
+      const val = data.datasets[0].data[i];
+      const label = opts.formatter ? opts.formatter(val) : val;
+      ctx.fillText(label, bar.x, bar.y - 4);
+    });
+    ctx.restore();
+  }
+};
+
+/* ── 가로 바 중앙에 레이블 그리는 커스텀 플러그인 ── */
+const centerLabelPlugin = {
+  id:'centerLabel',
+  afterDatasetsDraw(chart, args, opts){
+    const {ctx, data} = chart;
+    const ds = chart.getDatasetMeta(0);
+    ctx.save();
+    ctx.font = `700 ${opts.fontSize||12}px 'Noto Sans KR', sans-serif`;
+    ctx.fillStyle = opts.color || '#ffffff';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ds.data.forEach((bar, i) => {
+      const val = data.datasets[0].data[i];
+      const label = opts.formatter ? opts.formatter(val) : val;
+      const cx = (bar.x + bar.base) / 2;
+      if(bar.x - bar.base > 30) ctx.fillText(label, cx, bar.y);
+    });
+    ctx.restore();
+  }
+};
+
+/* ── 도넛 위 레이블 커스텀 플러그인 ── */
+const donutLabelPlugin = {
+  id:'donutLabel',
+  afterDraw(chart){
+    if(chart.config.type !== 'doughnut') return;
+    const {ctx, data} = chart;
+    const total = data.datasets[0].data.reduce((a,b)=>a+b,0);
+    const shortNames = ['정육/계란','간편식/밀키트','베이커리','수산/해산물','채소/과일'];
+    const meta = chart.getDatasetMeta(0);
+    ctx.save();
+    meta.data.forEach((arc, i) => {
+      const val = data.datasets[0].data[i];
+      const pct = Math.round(val/total*100);
+      // 중간각도 계산
+      const startAngle = arc.startAngle;
+      const endAngle = arc.endAngle;
+      const midAngle = (startAngle + endAngle) / 2;
+      const outerR = arc.outerRadius;
+      const innerR = arc.innerRadius;
+      const midR = (outerR + innerR) / 2;
+      const x = arc.x + Math.cos(midAngle) * midR;
+      const y = arc.y + Math.sin(midAngle) * midR;
+      // 슬라이스가 충분히 클 때만 표시
+      const arcSpan = endAngle - startAngle;
+      if(arcSpan < 0.3) return;
+      ctx.fillStyle = '#ffffff';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.font = `700 10px 'Noto Sans KR', sans-serif`;
+      ctx.fillText(shortNames[i], x, y - 7);
+      ctx.font = `500 9px 'DM Mono', monospace`;
+      ctx.fillStyle = 'rgba(255,255,255,0.85)';
+      ctx.fillText(val+'개', x, y + 6);
+      ctx.fillText('('+pct+'%)', x, y + 17);
+    });
+    ctx.restore();
+  }
+};
+
+const defOpts = {
+  responsive:true, maintainAspectRatio:false,
+  plugins:{legend:{display:false}},
+  animation:{duration:900,easing:'easeOutQuart'}
+};
+
+/* ── 3사 식품 할인율 ── */
+new Chart(document.getElementById('discountCompChart'),{
+  type:'bar',
+  data:{
+    labels:['Kurly','Coupang','SSG'],
+    datasets:[{
+      label:'평균 할인율',
+      data:[11.3,31.8,12],
+      backgroundColor:['rgba(189,118,255,0.85)','rgba(232,35,42,0.85)','rgba(232,66,90,0.75)'],
+      borderRadius:10,borderSkipped:false
+    }]
+  },
+  options:{
+    ...defOpts,
+    layout:{padding:{top:28}},
+    scales:{
+      x:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#7070a0',font:{size:12}}},
+      y:{
+        grid:{color:'rgba(255,255,255,0.04)'},
+        ticks:{color:'#7070a0',font:{size:11},callback:v=>v+'%'},
+        max:42
+      }
+    },
+    plugins:{
+      legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>ctx.parsed.y+'%'}},
+      topLabel:{fontSize:14,color:'#f0f0f8',formatter:v=>v+'%'}
+    }
+  },
+  plugins:[topLabelPlugin]
+});
+
+/* ── 3사 식품 평균가 ── */
+new Chart(document.getElementById('priceCompChart'),{
+  type:'bar',
+  data:{
+    labels:['Kurly','Coupang','SSG'],
+    datasets:[{
+      label:'평균 판매가(원)',
+      data:[15900,21018,5800],
+      backgroundColor:['rgba(189,118,255,0.85)','rgba(232,35,42,0.85)','rgba(232,66,90,0.75)'],
+      borderRadius:10,borderSkipped:false
+    }]
+  },
+  options:{
+    ...defOpts,
+    layout:{padding:{top:28}},
+    scales:{
+      x:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#7070a0',font:{size:11}}},
+      y:{
+        grid:{color:'rgba(255,255,255,0.04)'},
+        ticks:{color:'#7070a0',font:{size:11},callback:v=>v>=10000?(v/10000).toFixed(1)+'만':v.toLocaleString()},
+        max:27000
+      }
+    },
+    plugins:{
+      legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>ctx.parsed.y.toLocaleString()+'원'}},
+      topLabel:{fontSize:14,color:'#f0f0f8',formatter:v=>v>=10000?(v/10000).toFixed(1)+'만원':v.toLocaleString()+'원'}
+    }
+  },
+  plugins:[topLabelPlugin]
+});
+
+/* ── Kurly 식품 카테고리 파이 ── */
+new Chart(document.getElementById('kurlyFoodCategChart'),{
+  type:'doughnut',
+  data:{
+    labels:['정육/계란\n(33.7%)','간편식/밀키트\n(19.3%)','베이커리/디저트\n(17.0%)','수산/해산물\n(15.1%)','채소/과일\n(14.9%)'],
+    datasets:[{
+      data:[281,161,142,126,124],
+      backgroundColor:['#7c3aed','#5f0080','#bd76ff','#9b30c0','#d4a0ff'],
+      borderWidth:2,
+      borderColor:'rgba(17,17,24,0.6)',
+      hoverOffset:6
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,cutout:'50%',
+    plugins:{
+      legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>ctx.label.replace('\n',' ')}}
+    }
+  },
+  plugins:[donutLabelPlugin]
+});
+
+/* ── Kurly 카테고리별 할인율 (가로 바) ── */
+new Chart(document.getElementById('kurlyDiscCategChart'),{
+  type:'bar',
+  data:{
+    labels:['베이커리','채소/과일','수산','정육','밀키트'],
+    datasets:[{
+      data:[6.1,9.4,11.0,11.4,11.7],
+      backgroundColor:['rgba(245,200,66,0.85)','rgba(255,112,117,0.85)','rgba(34,197,94,0.85)','rgba(189,118,255,0.85)','rgba(59,130,246,0.85)'],
+      borderRadius:8
+    }]
+  },
+  options:{
+    ...defOpts,
+    indexAxis:'y',
+    scales:{
+      x:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#7070a0',font:{size:10},callback:v=>v+'%'},max:17},
+      y:{grid:{display:false},ticks:{color:'#7070a0',font:{size:10}}}
+    },
+    plugins:{
+      legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>ctx.parsed.x+'%'}},
+      outerRightLabel:{fontSize:14,color:'#f0f0f8',formatter:v=>v+'%'}
+    }
+  },
+  plugins:[{
+    id:'outerRightLabel',
+    afterDatasetsDraw(chart, args, opts){
+      const {ctx, data} = chart;
+      const ds = chart.getDatasetMeta(0);
+      ctx.save();
+      ctx.font = `700 ${opts.fontSize||11}px 'Noto Sans KR', sans-serif`;
+      ctx.fillStyle = opts.color || '#f0f0f8';
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+      ds.data.forEach((bar, i) => {
+        const val = data.datasets[0].data[i];
+        const label = opts.formatter ? opts.formatter(val) : val;
+        ctx.fillText(label, bar.x + 6, bar.y);
+      });
+      ctx.restore();
+    }
+  }]
+});
+
+/* ── Kurly 식품 가격대 분포 ── */
+new Chart(document.getElementById('kurlyFoodPriceChart'),{
+  type:'bar',
+  data:{
+    labels:['~5천','5~10천','1~2만','2~3만','3만+'],
+    datasets:[{
+      data:[140,280,310,74,30],
+      backgroundColor:'rgba(189,118,255,0.85)',
+      borderRadius:8
+    }]
+  },
+  options:{
+    ...defOpts,
+    layout:{padding:{top:28}},
+    scales:{
+      x:{grid:{display:false},ticks:{color:'#7070a0',font:{size:10}}},
+      y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#7070a0',font:{size:10}},max:370}
+    },
+    plugins:{
+      legend:{display:false},
+      topLabel:{fontSize:14,color:'#f0f0f8',formatter:v=>v+'개'}
+    }
+  },
+  plugins:[topLabelPlugin]
+});
+
+/* ── 카테고리 단가 vs Coupang 기준선 ── */
+new Chart(document.getElementById('categoryPriceCompChart'),{
+  type:'bar',
+  data:{
+    labels:['채소/과일','베이커리/디저트','수산/해산물','정육/계란','간편식/밀키트'],
+    datasets:[
+      {
+        label:'Kurly 카테고리 평균가',
+        data:[7977,15150,16466,17710,19159],
+        backgroundColor:'rgba(189,118,255,0.75)',
+        borderRadius:8
+      },
+      {
+        label:'Coupang Food 평균 (21,018원)',
+        data:[21018,21018,21018,21018,21018],
+        type:'line',
+        borderColor:'rgba(232,35,42,0.7)',
+        backgroundColor:'transparent',
+        borderWidth:2,
+        borderDash:[6,3],
+        pointRadius:0,
+        tension:0
+      }
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>ctx.dataset.label+': '+ctx.parsed.y.toLocaleString()+'원'}}
+    },
+    scales:{
+      x:{grid:{display:false},ticks:{color:'#7070a0',font:{size:11}}},
+      y:{
+        grid:{color:'rgba(255,255,255,0.04)'},
+        ticks:{color:'#7070a0',font:{size:11},callback:v=>v>=10000?(v/10000).toFixed(0)+'만':v},
+        max:25000
+      }
+    },
+    animation:{duration:900}
+  },
+  plugins:[{
+    id:'barCenterLabel',
+    afterDatasetsDraw(chart){
+      const {ctx, data} = chart;
+      const meta = chart.getDatasetMeta(0);
+      ctx.save();
+      ctx.font = `700 11px 'Noto Sans KR', sans-serif`;
+      ctx.fillStyle = '#ffffff';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      meta.data.forEach((bar, i) => {
+        const val = data.datasets[0].data[i];
+        const label = val >= 10000 ? (val/10000).toFixed(1)+'만원' : val.toLocaleString()+'원';
+        const cy = (bar.y + bar.base) / 2;
+        if(bar.base - bar.y > 18) ctx.fillText(label, bar.x, cy);
+      });
+      ctx.restore();
+    }
+  },{
+    id:'refLineLabel',
+    afterDatasetsDraw(chart){
+      const {ctx, chartArea} = chart;
+      const meta = chart.getDatasetMeta(1);
+      if(!meta.data.length) return;
+      const y = meta.data[2].y; // 점선 y 위치
+      const text = 'Coupang Food 평균 21,018원 (기준선)';
+      ctx.save();
+      ctx.font = `700 11px 'Noto Sans KR', sans-serif`;
+      const tw = ctx.measureText(text).width;
+      const px = 12, py = 6;
+      const bw = tw + px * 2;
+      const bh = py * 2 + 14;
+      const bx = (chartArea.left + chartArea.right) / 2 - bw / 2;
+      const by = y - bh / 2; // 박스 중앙이 점선에 정확히 위치
+      const r = 6;
+      // 불투명 배경 (점선 가림)
+      ctx.fillStyle = 'rgba(40,10,30,1)';
+      ctx.strokeStyle = 'rgba(232,35,42,0.9)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(bx+r, by);
+      ctx.lineTo(bx+bw-r, by);
+      ctx.quadraticCurveTo(bx+bw, by, bx+bw, by+r);
+      ctx.lineTo(bx+bw, by+bh-r);
+      ctx.quadraticCurveTo(bx+bw, by+bh, bx+bw-r, by+bh);
+      ctx.lineTo(bx+r, by+bh);
+      ctx.quadraticCurveTo(bx, by+bh, bx, by+bh-r);
+      ctx.lineTo(bx, by+r);
+      ctx.quadraticCurveTo(bx, by, bx+r, by);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+      // 텍스트
+      ctx.fillStyle = '#ff6b6b';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(text, (chartArea.left + chartArea.right) / 2, y);
+      ctx.restore();
+    }
+  }]
+});
+}); // end window.onload
+</script>
+</body>
+</html>
+" title="경쟁사 분석"></iframe>
+</div>
+
+<script>
+function openModal(){
+  const modal = document.getElementById('analysisModal');
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(){
+  document.getElementById('analysisModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.getElementById('analysisModal').addEventListener('click', function(e){
+  if(e.target === this) closeModal();
+});
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeModal();
+});
+</script>
+</body>
+</html>
